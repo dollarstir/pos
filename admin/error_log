@@ -1,0 +1,17 @@
+[29-Aug-2019 02:40:12 America/New_York] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/halizzsi/public_html/admission/admin/db.php on line 2
+[04-Sep-2019 01:13:51 America/New_York] PHP Notice:  Undefined variable: structure in /home/halizzsi/public_html/admission/admin/veditap.php on line 1892
+[04-Sep-2019 01:13:51 America/New_York] PHP Notice:  Undefined variable: description in /home/halizzsi/public_html/admission/admin/veditap.php on line 1898
+[04-Sep-2019 01:14:12 America/New_York] PHP Notice:  Undefined variable: structure in /home/halizzsi/public_html/admission/admin/veditap.php on line 1892
+[04-Sep-2019 01:14:12 America/New_York] PHP Notice:  Undefined variable: description in /home/halizzsi/public_html/admission/admin/veditap.php on line 1898
+[04-Sep-2019 01:14:26 America/New_York] PHP Notice:  Undefined variable: structure in /home/halizzsi/public_html/admission/admin/veditap.php on line 1892
+[04-Sep-2019 01:14:26 America/New_York] PHP Notice:  Undefined variable: description in /home/halizzsi/public_html/admission/admin/veditap.php on line 1898
+[04-Sep-2019 05:10:59 America/New_York] PHP Notice:  Undefined variable: structure in /home/halizzsi/public_html/admission/admin/veditap.php on line 1892
+[04-Sep-2019 05:10:59 America/New_York] PHP Notice:  Undefined variable: description in /home/halizzsi/public_html/admission/admin/veditap.php on line 1898
+[04-Sep-2019 05:12:21 America/New_York] PHP Notice:  Undefined variable: structure in /home/halizzsi/public_html/admission/admin/veditap.php on line 1892
+[04-Sep-2019 05:12:21 America/New_York] PHP Notice:  Undefined variable: description in /home/halizzsi/public_html/admission/admin/veditap.php on line 1898
+[04-Sep-2019 05:12:21 America/New_York] PHP Notice:  Undefined variable: structure in /home/halizzsi/public_html/admission/admin/veditap.php on line 1892
+[04-Sep-2019 05:12:21 America/New_York] PHP Notice:  Undefined variable: description in /home/halizzsi/public_html/admission/admin/veditap.php on line 1898
+[04-Sep-2019 05:12:56 America/New_York] PHP Notice:  Undefined variable: structure in /home/halizzsi/public_html/admission/admin/veditap.php on line 1892
+[04-Sep-2019 05:12:56 America/New_York] PHP Notice:  Undefined variable: description in /home/halizzsi/public_html/admission/admin/veditap.php on line 1898
+[09-Sep-2019 05:56:29 America/New_York] PHP Notice:  Undefined variable: structure in /home/halizzsi/public_html/admission/admin/veditap.php on line 1892
+[09-Sep-2019 05:56:29 America/New_York] PHP Notice:  Undefined variable: description in /home/halizzsi/public_html/admission/admin/veditap.php on line 1898
