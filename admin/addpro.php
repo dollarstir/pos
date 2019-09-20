@@ -624,29 +624,37 @@ include "lib.php";
                         <div class="statbox widget box box-shadow">
                             <div class="widget-content widget-content-area">
                                 <form class="sales_cart">
-                                    <div class="row mb-4">
-                                        <div class="col">
-                                            Drug For Headache<br>
-                                            GH&#8373; <span class="partCost">1000</span>
+                                    <div class="cart_sale">
+
+
+                                        <div class="row mb-4">
+                                            <div class="col">
+                                                Drug For Headache<br>
+                                                GH&#8373; <span class="partCost">1000</span>
+                                            </div>
+                                            <div class="col">
+                                                <input type="hidden" class="price" value="1000">
+                                                <input name="quan_input" type="number" class="form-control" value="1">
+                                            </div>
+                                            <i style="margin: 5px;" class="fa fa-times fa-2x iconBtn"></i>
                                         </div>
-                                        <div class="col">
-                                            <input type="text" class="form-control" value="1">
+                                        <div class="row mb-4">
+                                            <div class="col">
+                                                Drug For Headache<br>
+                                                GH&#8373; <span class="partCost">1500</span>
+                                            </div>
+                                            <div class="col">
+                                                <input type="hidden" class="price" value="1500">
+                                                <input name="quan_input" type="number" class="form-control" value="1">
+                                            </div>
+                                            <i style="margin: 5px;" class="fa fa-times fa-2x iconBtn"></i>
                                         </div>
-                                        <i style="margin: 5px;" class="fa fa-times fa-2x iconBtn"></i>
+
+
                                     </div>
                                     <div class="row mb-4">
                                         <div class="col">
-                                            Drug For Headache<br>
-                                            GH&#8373; <span class="partCost">1000</span>
-                                        </div>
-                                        <div class="col">
-                                            <input type="text" class="form-control" value="1">
-                                        </div>
-                                        <i style="margin: 5px;" class="fa fa-times fa-2x iconBtn"></i>
-                                    </div>
-                                    <div class="row mb-4">
-                                        <div class="col">
-                                            Total Cost: GH&#8373; <span class="grandCost">1000</span>
+                                            Total Cost: GH&#8373; <span class="grandCost"></span>
                                         </div>
                                     </div>
                                 </form>
@@ -1815,6 +1823,7 @@ include "lib.php";
     </script>
     <!-- END PAGE LEVEL CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
+    <script src="assets/custom.js"></script>
     <!-- END GLOBAL MANDATORY STYLES -->   
 
 </body>

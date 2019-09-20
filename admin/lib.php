@@ -36,7 +36,7 @@ function product_sales() {
                 <td>'.$results['id'].'</td>
                 <td>'.$results['product'].'</td>
                 <td>'.$results['unit_price'].'</td>
-                <td class="'.$results['id'].'"><div class="btn">Add</div></td>
+                <td><div id="'.$results['id'].'" class="btn add_to_cartProduct">Add</div></td>
             </tr>
         ';
     }
