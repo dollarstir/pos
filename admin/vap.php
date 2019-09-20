@@ -2,12 +2,8 @@
 session_start();
 include "db.php";
 
-
-
 if (!isset($_SESSION['id']))
-
 {
-
 
     echo '<script>window.location="index.php"</script>';
 
@@ -40,11 +36,11 @@ include "core.php";
     <!-- END PAGE LEVEL CUSTOM STYLES -->
 </head>
 <body>
-    <!-- <div id="eq-loader">
+    <div id="eq-loader">
       <div class="eq-loader-div">
           <div class="eq-loading dual-loader mx-auto mb-5"></div>
       </div>
-    </div> -->
+    </div>
     <!-- Tab Mobile View Header -->
     <header class="tabMobileView header navbar fixed-top d-lg-none">
         <div class="nav-toggle">
@@ -140,7 +136,7 @@ include "core.php";
                     </div>
                 </div> -->
                 
-                <div class="row" id="cancel-row">
+                <div class="row layout-spacing">
                 
                     <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
                         <div class="statbox widget box box-shadow">

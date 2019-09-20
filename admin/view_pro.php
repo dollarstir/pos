@@ -126,28 +126,26 @@ include "core.php";
         <!--  BEGIN CONTENT PART  -->
         <div id="content" class="main-content">
             <div class="container">
-                <!-- <div class="page-header">
+                <div class="page-header">
                     <div class="page-title">
-                        <h3>APPLICANT LIST</h3>
+                        <h3>Sales</h3>
                         <div class="crumbs">
                             <ul id="breadcrumbs" class="breadcrumb">
-                                <li><a href="index.html"><i class="flaticon-home-fill"></i></a></li>
-                                <li><a href="#">Venue</a></li>
-                               
-                                <li class="active"><a href="#">APPLICANT LIST</a> </li>
+                                <li><a href="index.php"><i class="flaticon-home-fill"></i></a></li>                          
+                                <li class="active"><a href="#">SALES LIST</a> </li>
                             </ul>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 
-                <div class="row" id="cancel-row">
+                <div class="row layout-spacing">
                 
                     <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
                         <div class="statbox widget box box-shadow">
                             <div class="widget-header">
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <u><center><h4>COURSES</h4></center></u>
+                                        <u><center><h4>SALES</h4></center></u>
                                     </div>                 
                                 </div>
                             </div>
@@ -157,25 +155,21 @@ include "core.php";
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Course Title</th>
-                                                <th>Duration</th>
-                                                <th>Level</th>
-                                                <th>Fees</th>
-                                                
+                                                <th>Product</th>
+                                                <th>Quantity</th>
+                                                <th>Unit Price</th>
+                                                <th>Grand Total</th>
+                                                <th>Paid Amount</th>
+                                                <th>Balance</th>
                                                 <th>Location</th>
-                                                <th>Requirement</th>
-                                                
-                                                <th>Structure</th>
-                                                <th>Description</th>
-                                                <!-- <th class="invisible"></th> -->
-                                                <th>Action </th>
+                                                <th>Date Added</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php 
                                             
                                             include "db.php";
-                                            echo getcourses()   ;
+
                                             
                                             
                                             ?>
