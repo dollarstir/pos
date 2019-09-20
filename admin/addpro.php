@@ -61,6 +61,14 @@ include "lib.php";
 
 </head>
 <body>
+    <div style="background: gray;box-shadow: 0 0 10px gray;width: 40px; height: 40px;position: fixed;top: 50vh;left: 50vw">
+        <div class="widget-content widget-content-area">
+            <div class="table-responsive mb-4">
+                
+            </div>
+        </div>
+    </div>
+    
     <div id="eq-loader" style="display: none;">
       <div class="eq-loader-div">
           <div class="eq-loading dual-loader mx-auto mb-5"></div>

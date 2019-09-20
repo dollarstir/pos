@@ -31,6 +31,12 @@ $(document).ready(function() {
         sales_cart_count();
     }
 
+    $(document).on("click", ".iconBtn", function() {
+        $(this).parent().remove();
+
+        sales_cart_count();
+    })
+
     $(document).on("keyup change", "input[name='quan_input']",function () {
         var val = $(this).val();
         var price = $(this).prev(".price").val();
