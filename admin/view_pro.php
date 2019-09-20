@@ -14,6 +14,7 @@ if (!isset($_SESSION['id']))
 }
 
 include "core.php";
+include "lib.php";
 
 ?>
 
@@ -161,7 +162,6 @@ include "core.php";
                                                 <th>Grand Total</th>
                                                 <th>Paid Amount</th>
                                                 <th>Balance</th>
-                                                <th>Location</th>
                                                 <th>Date Added</th>
                                             </tr>
                                         </thead>
@@ -170,8 +170,7 @@ include "core.php";
                                             
                                             include "db.php";
 
-                                            
-                                            
+                                            sales_report();
                                             ?>
                                            
                                         </tbody>

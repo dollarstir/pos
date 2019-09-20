@@ -13,3 +13,11 @@
     text-align: center;
     margin-left: 15px;
 }
+
+.iconBtn:hover {
+    color: lightgray;
+}
+
+.iconBtn:active {
+    transform: translateY(2px);
+}

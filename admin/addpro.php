@@ -1,3 +1,8 @@
+<?php
+include "lib.php";
+
+?>
+
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -581,14 +586,14 @@
                                                 <th>ID</th>
                                                 <th>Product</th>
                                                 <th>Unit Price</th>
-
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php 
                                             
                                             include "db.php";
-
+                                            product_sales()
                                             
                                             
                                             ?>
@@ -618,18 +623,31 @@
                     <div class="col-lg-5 col-lg-5 col-md-5 col-sm-12 col-12 layout-spacing">
                         <div class="statbox widget box box-shadow">
                             <div class="widget-content widget-content-area">
-                                <form class="subcourse">
+                                <form class="sales_cart">
                                     <div class="row mb-4">
                                         <div class="col">
                                             Drug For Headache<br>
-                                            GH&#8373; <span>1000</span>
+                                            GH&#8373; <span class="partCost">1000</span>
                                         </div>
                                         <div class="col">
                                             <input type="text" class="form-control" value="1">
                                         </div>
-
-                                            <i class="fa fa-times fa-2x"></i>
-
+                                        <i style="margin: 5px;" class="fa fa-times fa-2x iconBtn"></i>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            Drug For Headache<br>
+                                            GH&#8373; <span class="partCost">1000</span>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" value="1">
+                                        </div>
+                                        <i style="margin: 5px;" class="fa fa-times fa-2x iconBtn"></i>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            Total Cost: GH&#8373; <span class="grandCost">1000</span>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
