@@ -55,7 +55,7 @@ echo '<div class="sidebar-wrapper sidebar-theme">
                         <ul class="collapse submenu list-unstyled" id="pages" data-parent="#accordionExample">
                            
                             <li>
-                                <a href="vap.php"> Add products </a>
+                                <a href="adproduct.php"> Add products </a>
                             </li>
                             <li>
                             <a href="vap.php"> View products </a>
@@ -116,7 +116,7 @@ echo '<div class="sidebar-wrapper sidebar-theme">
                         </a>
                         <ul class="collapse submenu list-unstyled" id="ecommerce" data-parent="#accordionExample">
                             <li>
-                                <a href="adsubadmin.php"> Add Category </a>
+                                <a href="adcategory.php"> Add Category </a>
                             </li>
                             <li>
                                 <a href="#"> View Category </a>
@@ -140,7 +140,7 @@ echo '<div class="sidebar-wrapper sidebar-theme">
                         </a>
                         <ul class="collapse submenu list-unstyled" id="ui-features" data-parent="#accordionExample">
                             <li>
-                                <a href="gen_voucher.php">Add Suppliers</a>
+                                <a href="adsupplier.php">Add Suppliers</a>
                             </li>
                             <li>
                                 <a href="vvol.php"> View  Suppliers</a>
@@ -168,7 +168,7 @@ echo '<div class="sidebar-wrapper sidebar-theme">
                         </a>
                         <ul class="collapse submenu list-unstyled" id="elements" data-parent="#accordionExample">
                             <li>
-                                <a href="element_steps.html"> Add Customers </a>
+                                <a href="adcustomer.php"> Add Customers </a>
                             </li>
                             <li>
                                 <a href="element_steps.html"> View Customers </a>
@@ -192,7 +192,7 @@ echo '<div class="sidebar-wrapper sidebar-theme">
                         </a>
                         <ul class="collapse submenu list-unstyled" id="editors" data-parent="#accordionExample">
                             <li>
-                                <a href="editor_tinymce.html"> Add Purchases </a>
+                                <a href="adpurchase.php"> Add Purchases </a>
                             </li>
                             <li>
                                 <a href="editor_quill.html">View  Purchases </a>

@@ -134,7 +134,7 @@ include "core.php";
         <!--  BEGIN CONTENT PART  -->
         <div id="content" class="main-content">
             <div class="container">
-                <div class="page-header">
+                <!-- <div class="page-header">
                     <div class="page-title">
                         <h3>HTML5 Export</h3>
                         <div class="crumbs">
@@ -146,7 +146,7 @@ include "core.php";
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
                 <div class="row" id="cancel-row">
                 
@@ -155,7 +155,7 @@ include "core.php";
                             <div class="widget-header">
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h4>HTML5 Export</h4>
+                                        <center><h4>ALL PRODUCTS</h4></center>
                                     </div>                 
                                 </div>
                             </div>
@@ -164,13 +164,16 @@ include "core.php";
                                     <table id="html5-extension" class="table table-striped table-bordered table-hover" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                                <th>Extn.</th>
+                                                <th>Brand Name</th>
+                                                <th>Genetic Name</th>
+                                                <th>Supplier Namne</th>
+                                                <th>Category</th>
+                                                <th>Price</th>
+                                                <th>Remaining</th>
+                                                <th>Quantity</th>
+                                                <th>Date Added</th>
+                                                <th>Last Updated</th>
+                                                <th>Expiration</th>
                                                 <th class="invisible"></th>
                                                 <th>Action</th>
                                             </tr>
@@ -183,6 +186,9 @@ include "core.php";
                                                 <td>61</td>
                                                 <td>2011/04/25</td>
                                                 <td>$320,800</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
@@ -215,6 +221,9 @@ include "core.php";
                                                 <td>2011/07/25</td>
                                                 <td>$170,750</td>
                                                 <td>8422</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -246,6 +255,9 @@ include "core.php";
                                                 <td>2009/01/12</td>
                                                 <td>$86,000</td>
                                                 <td>1562</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -277,6 +289,9 @@ include "core.php";
                                                 <td>2012/03/29</td>
                                                 <td>$433,060</td>
                                                 <td>6224</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -308,6 +323,9 @@ include "core.php";
                                                 <td>2008/11/28</td>
                                                 <td>$162,700</td>
                                                 <td>5407</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -339,6 +357,9 @@ include "core.php";
                                                 <td>2012/12/02</td>
                                                 <td>$372,000</td>
                                                 <td>4804</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -370,6 +391,9 @@ include "core.php";
                                                 <td>2012/08/06</td>
                                                 <td>$137,500</td>
                                                 <td>9608</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -401,6 +425,9 @@ include "core.php";
                                                 <td>2010/10/14</td>
                                                 <td>$327,900</td>
                                                 <td>6200</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -432,6 +459,9 @@ include "core.php";
                                                 <td>2009/09/15</td>
                                                 <td>$205,500</td>
                                                 <td>2360</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -463,6 +493,9 @@ include "core.php";
                                                 <td>2008/12/13</td>
                                                 <td>$103,600</td>
                                                 <td>1667</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -494,6 +527,9 @@ include "core.php";
                                                 <td>2008/12/19</td>
                                                 <td>$90,560</td>
                                                 <td>3814</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -525,6 +561,9 @@ include "core.php";
                                                 <td>2013/03/03</td>
                                                 <td>$342,000</td>
                                                 <td>9497</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -556,6 +595,9 @@ include "core.php";
                                                 <td>2008/10/16</td>
                                                 <td>$470,600</td>
                                                 <td>6741</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -587,6 +629,9 @@ include "core.php";
                                                 <td>2012/12/18</td>
                                                 <td>$313,500</td>
                                                 <td>3597</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -618,6 +663,9 @@ include "core.php";
                                                 <td>2010/03/17</td>
                                                 <td>$385,750</td>
                                                 <td>1965</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -649,6 +697,9 @@ include "core.php";
                                                 <td>2012/11/27</td>
                                                 <td>$198,500</td>
                                                 <td>1581</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -680,6 +731,9 @@ include "core.php";
                                                 <td>2010/06/09</td>
                                                 <td>$725,000</td>
                                                 <td>3059</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -711,6 +765,9 @@ include "core.php";
                                                 <td>2009/04/10</td>
                                                 <td>$237,500</td>
                                                 <td>1721</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -742,6 +799,9 @@ include "core.php";
                                                 <td>2012/10/13</td>
                                                 <td>$132,000</td>
                                                 <td>2558</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -773,6 +833,9 @@ include "core.php";
                                                 <td>2012/09/26</td>
                                                 <td>$217,500</td>
                                                 <td>2290</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -804,6 +867,9 @@ include "core.php";
                                                 <td>2011/09/03</td>
                                                 <td>$345,000</td>
                                                 <td>1937</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -835,6 +901,9 @@ include "core.php";
                                                 <td>2009/06/25</td>
                                                 <td>$675,000</td>
                                                 <td>6154</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -866,6 +935,9 @@ include "core.php";
                                                 <td>2011/12/12</td>
                                                 <td>$106,450</td>
                                                 <td>8330</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -897,6 +969,9 @@ include "core.php";
                                                 <td>2010/09/20</td>
                                                 <td>$85,600</td>
                                                 <td>3023</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -928,6 +1003,9 @@ include "core.php";
                                                 <td>2009/10/09</td>
                                                 <td>$1,200,000</td>
                                                 <td>5797</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -959,6 +1037,9 @@ include "core.php";
                                                 <td>2010/12/22</td>
                                                 <td>$92,575</td>
                                                 <td>8822</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -990,6 +1071,9 @@ include "core.php";
                                                 <td>2010/11/14</td>
                                                 <td>$357,650</td>
                                                 <td>9239</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
@@ -1021,6 +1105,9 @@ include "core.php";
                                                 <td>2011/06/07</td>
                                                 <td>$206,850</td>
                                                 <td>1314</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
+                                                <td>5421</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="usr-img-frame mr-2 rounded-circle">
