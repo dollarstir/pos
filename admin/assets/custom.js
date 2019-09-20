@@ -40,17 +40,22 @@ $(document).ready(function() {
         sales_item_price(elem, parseInt(price), parseInt(val));
     })
 
-    $(document).on("click", ".add_to_cartProduct", function(e) {
+    $(document).on("click", ".add_to_cartProduct", function() {
         var target = $(this).attr("id");
+
         var option = {
             url: 'lib.php',
-            type: post,
+            type: 'post',
             data: {id: target,func: 'addToCart'},
             dataType: 'json',
             success: function(response) {
                 $(".cart_sale").append('<div class="row mb-4"><div class="col">'+response["bname"]+'<br>GH&#8373; <span class="partCost">'+response["price"]+'</span></div><div class="col"><input type="hidden" class="price" value="'+response["price"]+'"><input id="'+response["id"]+'" name="quan_input" type="number" class="form-control" value="1"></div><i style="margin: 5px;" class="fa fa-times fa-2x iconBtn"></i></div>');
+
+                sales_cart_count();
             }
         }
+
+        $.ajax(option);
     })
 
 })

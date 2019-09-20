@@ -52,6 +52,10 @@ include "lib.php";
             appearance: none;
         }
         select.form-control::-ms-expand { display: none; }
+
+        .btn:active {
+            transform: translateY(2px);
+        }
     </style>
     <!--  BEGIN CUSTOM STYLE FILE  -->
 
@@ -621,46 +625,60 @@ include "lib.php";
                     </div>
 
                     <div class="col-lg-5 col-lg-5 col-md-5 col-sm-12 col-12 layout-spacing">
-                        <div class="statbox widget box box-shadow">
-                            <div class="widget-content widget-content-area">
-                                <form class="sales_cart">
-                                    <div class="cart_sale">
+
+                        <div class="col-lg-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                            <div class="statbox widget box box-shadow">
+                                <div class="widget-content widget-content-area">
+                                    <form class="sales_cart">
+                                        <div class="cart_sale">
 
 
-                                        <div class="row mb-4">
-                                            <div class="col">
-                                                Drug For Headache<br>
-                                                GH&#8373; <span class="partCost">1000</span>
-                                            </div>
-                                            <div class="col">
-                                                <input type="hidden" class="price" value="1000">
-                                                <input name="quan_input" type="number" class="form-control" value="1">
-                                            </div>
-                                            <i style="margin: 5px;" class="fa fa-times fa-2x iconBtn"></i>
+                                            <!-- <div class="row mb-4">
+                                                <div class="col">
+                                                    Drug For Headache<br>
+                                                    GH&#8373; <span class="partCost">1000</span>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="hidden" class="price" value="1000">
+                                                    <input name="quan_input" type="number" class="form-control" value="1">
+                                                </div>
+                                                <i style="margin: 5px;" class="fa fa-times fa-2x iconBtn"></i>
+                                            </div> -->
+                                            <!-- <div class="row mb-4">
+                                                <div class="col">
+                                                    Drug For Headache<br>
+                                                    GH&#8373; <span class="partCost">1500</span>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="hidden" class="price" value="1500">
+                                                    <input name="quan_input" type="number" class="form-control" value="1">
+                                                </div>
+                                                <i style="margin: 5px;" class="fa fa-times fa-2x iconBtn"></i>
+                                            </div> -->
+
+
                                         </div>
                                         <div class="row mb-4">
                                             <div class="col">
-                                                Drug For Headache<br>
-                                                GH&#8373; <span class="partCost">1500</span>
+                                                Total Cost: GH&#8373; <span class="grandCost"></span>
                                             </div>
-                                            <div class="col">
-                                                <input type="hidden" class="price" value="1500">
-                                                <input name="quan_input" type="number" class="form-control" value="1">
-                                            </div>
-                                            <i style="margin: 5px;" class="fa fa-times fa-2x iconBtn"></i>
                                         </div>
+                                    </form>
+                                </div>
+                            </div>
 
+                        </div>
 
-                                    </div>
-                                    <div class="row mb-4">
-                                        <div class="col">
-                                            Total Cost: GH&#8373; <span class="grandCost"></span>
-                                        </div>
-                                    </div>
-                                </form>
+                        <div class="col-lg-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                            <div class="statbox widget box box-shadow">
+                                <div class="widget-content widget-content-area">
+                                    <div style="width: 100%;" class="btn btn-primary">Continue to Sale</div>
+                                </div>
                             </div>
                         </div>
+
                     </div>
+
 
 
 
