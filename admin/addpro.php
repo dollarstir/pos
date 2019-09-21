@@ -16,6 +16,8 @@ include "lib.php";
     <link href="assets/css/plugins.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/css/mess.css">
     <link rel="stylesheet" href="plugins/fontawesome/css/all.css">
+    <link rel="stylesheet" href="plugins/sweetalerts/sweetalert2.min.css">
+    <link rel="stylesheet" href="plugins/sweetalerts/sweetalert.css">
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!--  BEGIN CUSTOM STYLE FILE  -->
@@ -56,12 +58,41 @@ include "lib.php";
         .btn:active {
             transform: translateY(2px);
         }
+
+        .dataTables_filter {
+            width: 70%;
+        }
+
+        .customCont {display: none;max-height: 80vh;position: fixed; z-index: 1059; margin: 20px 0; left: 50%; transform: translateX(-50%);overflow: auto;}
+
+        .closePop:hover {
+            box-shadow: 0 0 5px gray;
+        }
     </style>
     <!--  BEGIN CUSTOM STYLE FILE  -->
 
 </head>
 <body>
-    
+    <div class="container customCont">
+        <div class="closePop" style="background: lightgray; display: inline-block;padding: 2px 5px;border: 0.3px solid red"><i style="color: black" class="fa fa-times fa-2x"></i></div>
+
+        <div class="statbox widget box box-shadow layout-spacing">
+            <div style="box-shadow: 0 0 10px gray;" class="widget-content widget-content-area">
+
+                <div class="layout-spacing return">
+          
+
+
+                </div>
+
+                <div class="row">
+                    <div class="submitreport btn btn-primary">Add to Report</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <div id="eq-loader" style="display: none;">
       <div class="eq-loader-div">
           <div class="eq-loading dual-loader mx-auto mb-5"></div>
@@ -162,151 +193,7 @@ include "lib.php";
                     </div>
                 </div>
 
-                <!-- <div class="row">
-
-                    <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-                        <div class="statbox widget box box-shadow">
-                            <div class="widget-header widget-heading">
-                                <div class="row">
-                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <p>Use <code>.form-control-rounded</code> to make input group rounded. </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-                        <div class="statbox widget box box-shadow">
-                            <div class="widget-header">
-                                <div class="row">
-                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h4>Input text</h4>
-                                    </div>                 
-                                </div>
-                            </div>
-                            <div class="widget-content widget-content-area">
-                                <form method="post">
-                                    <div class="form-group">
-                                        <p>Use input <code>type="text"</code>.</p>
-                                        <label for="t-text" class="sr-only">Text</label>
-                                        <input id="t-text" type="text" name="txt" value="Some Text..." class="form-control-rounded form-control" required="">
-                                        <input type="submit" name="txt" class="mt-4 btn btn-button-7 btn-rounded">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-                        <div class="statbox widget box box-shadow">
-                            <div class="widget-header">
-                                <div class="row">
-                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h4>Password</h4>
-                                    </div>                                                                        
-                                </div>
-                            </div>
-                            <div class="widget-content widget-content-area">
-                                <form method="post">
-                                    <div class="form-group">
-                                        <p>Use input <code>type="password"</code>.</p>
-                                        <label for="p-text" class="sr-only">Password</label>
-                                        <input id="p-text" type="password" name="pass" value="dummypassword" class="form-control-rounded form-control" required="">
-                                        <input type="submit" name="pass" class="mt-4 btn btn-button-7 btn-rounded">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-                        <div class="statbox widget box box-shadow">
-                            <div class="widget-header">
-                                <div class="row">
-                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h4>Email</h4>
-                                    </div>                                                                        
-                                </div>
-                            </div>
-                            <div class="widget-content widget-content-area">
-                                <form method="post">
-                                    <div class="form-group">
-                                        <p>Use input <code>type="email"</code>.</p>
-                                        <label for="e-text" class="sr-only">Email</label>
-                                        <input id="e-text" type="email" name="email" value="email@mail.com" class="form-control-rounded form-control" required="">
-                                        <input type="submit" name="email" class="mt-4 btn btn-button-7 btn-rounded">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-                        <div class="statbox widget box box-shadow">
-                            <div class="widget-header">
-                                <div class="row">
-                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h4>Url</h4>
-                                    </div>                                                                        
-                                </div>
-                            </div>
-                            <div class="widget-content widget-content-area">
-                                <form method="post">
-                                    <div class="form-group">
-                                        <p>Use input <code>type="url"</code>.</p>
-                                        <label for="url-text" class="sr-only">Url</label>
-                                        <input id="url-text" type="url" name="url" value="https://dummyurl.com" class="form-control-rounded form-control" required="">
-                                        <input type="submit" name="url" class="mt-4 btn btn-button-7 btn-rounded">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-                        <div class="statbox widget box box-shadow">
-                            <div class="widget-header">
-                                <div class="row">
-                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h4>Telephone Number</h4>
-                                    </div>                                                                        
-                                </div>
-                            </div>
-                            <div class="widget-content widget-content-area">
-                                <form method="post">
-                                    <div class="form-group">
-                                        <p>Use input <code>type="tel"</code>.</p>
-                                        <label for="tel-text" class="sr-only">Telephone</label>
-                                        <input id="tel-text" type="tel" name="tel" value="6-(666)-111-7777" class="form-control-rounded form-control" required="">
-                                        <input type="submit" name="tel" class="mt-4 btn btn-button-7 btn-rounded">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-                        <div class="statbox widget box box-shadow">
-                            <div class="widget-header">
-                                <div class="row">
-                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h4>Search</h4>
-                                    </div>                                                                        
-                                </div>
-                            </div>
-                            <div class="widget-content widget-content-area">
-                                <form method="post">
-                                    <div class="form-group">
-                                        <p>Use input <code>type="search"</code>.</p>
-                                        <label for="search-text" class="sr-only">Search</label>
-                                        <input id="search-text" type="search" class="form-control-rounded form-control" required="">
-                                        <input type="submit" name="search" class="mt-4 btn btn-button-7 btn-rounded">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>                    
+                <!-- <div class="row">                
 
                 </div> -->
 
@@ -673,7 +560,7 @@ include "lib.php";
                         <div class="col-lg-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                             <div class="statbox widget box box-shadow">
                                 <div class="widget-content widget-content-area">
-                                    <div style="width: 100%;" class="btn btn-primary">Continue to Sale</div>
+                                    <div style="width: 100%;" class="reportPopUp btn btn-primary">Continue to Sale</div>
                                 </div>
                             </div>
                         </div>
@@ -1826,7 +1713,6 @@ include "lib.php";
             buttons: {
                 buttons: [
                     { extend: 'copy', className: 'btn btn-default btn-rounded btn-sm mb-4' },
-                    { extend: 'csv', className: 'btn btn-default btn-rounded btn-sm mb-4' },
                     { extend: 'excel', className: 'btn btn-default btn-rounded btn-sm mb-4' },
                     { extend: 'print', className: 'btn btn-default btn-rounded btn-sm mb-4' }
                 ]
@@ -1841,6 +1727,8 @@ include "lib.php";
         } );
     </script>
     <!-- END PAGE LEVEL CUSTOM SCRIPTS -->
+    <script src="plugins/sweetalerts/sweetalert2.min.js"></script>
+    <script src="plugins/sweetalerts/custom-sweetalert.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="assets/custom.js"></script>
     <!-- END GLOBAL MANDATORY STYLES -->   
