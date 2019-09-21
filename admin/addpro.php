@@ -477,6 +477,7 @@ include "lib.php";
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Product</th>
+                                                <th>Remaining</th>
                                                 <th>Unit Price</th>
                                                 <th>Action</th>
                                             </tr>

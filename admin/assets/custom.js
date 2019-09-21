@@ -77,7 +77,7 @@ $(document).ready(function() {
             var ids = $(this).attr("id");
             var value = $(this).val();
             
-            targets[ind] = [ids, value]
+            targets[ind] = [ids, value];
 
             ind++;
 
@@ -145,8 +145,11 @@ $(document).ready(function() {
                 if(response.includes('success') && (!response.includes('error') || !response.includes('invalid') || !response.includes('empty'))) {
                     Swal.fire({
                         type: 'success',
-                        text: 'Added Sale Successfully'
-                    })
+                        text: 'Added Sale Successfully',
+                        
+                    }).then(function() {
+                        location.reload();
+                    });
 
                     $(".customCont").fadeOut(500);
 
@@ -161,6 +164,12 @@ $(document).ready(function() {
                     Swal.fire({
                         type: 'warning',
                         text: 'Please fill all neccessary input fields',
+                    })
+
+                } else if(response.includes('out')) {
+                    Swal.fire({
+                        type: 'warning',
+                        text: 'Can\'t add to stock because a product is out of stock\nPlease remove it!!',
                     })
 
                 } else {
