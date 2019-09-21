@@ -164,7 +164,7 @@ if(isset($_GET) || isset($_POST)) {
                     $query_d = mysqli_query($conn, $sql_d);
                     $res_d = mysqli_fetch_array($query_d);
 
-                    if(($res_d['remaining'] - $quantity) <= 0) {
+                    if(($res_d['remaining'] - $quantity) < 0) {
                         $res[$key] = 'out';
 
                     } else {

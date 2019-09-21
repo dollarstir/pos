@@ -169,7 +169,7 @@ $(document).ready(function() {
                 } else if(response.includes('out')) {
                     Swal.fire({
                         type: 'warning',
-                        text: 'Can\'t add to stock because a product is out of stock\nPlease remove it!!',
+                        text: 'Can\'t add to report because a product is out of stock\nPlease remove it!!',
                     })
 
                 } else {
