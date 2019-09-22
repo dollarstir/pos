@@ -175,13 +175,13 @@ function edic($id,$ctitle,$duration,$arequirement,$location,$level,$structure,$d
 
 }
 
-function updateappname($name){
+function updateappname($name,$location,$address,$telephone){
     include 'db.php';
-    $upap=mysqli_query($conn,"UPDATE title SET app_name='$name' ");
+    $upap=mysqli_query($conn,"UPDATE title SET app_name='$name',location= '$location',address = '$address',telephone = '$telephone' WHERE id ='1' ");
 
     if ($upap) {
 
-        echo' <div id="mess"><p>App title updated successfully</p></div>';
+        echo' <div id="mess"><p>App titles updated successfully</p></div>';
         # code...
     } else {
         echo' <div id="mess" style="background-color:red;"><p>Failed to update app title</p></div>';
@@ -539,6 +539,54 @@ function so(){
         </div>
     </footer>
     ';
+}
+
+
+
+
+function preport($fro,$to){
+
+    include 'db.php';
+    $vp =mysqli_query($conn,"SELECT * FROM purchased WHERE date_added >= '$fro' AND date_added <= '$to' ");
+
+    while ($vip= mysqli_fetch_array($vp)) {
+
+        $id= $vip['id'];
+        $bname= $vip['bname'];
+        $gname = $vip['gname'];
+        $spname = $vip['spname'];
+        $category =$vip['category'];
+        $price = $vip['price'];
+        $remaining = $vip['remaining'];
+        $quantity = $vip['quantity'];
+        $date_added = $vip['date_added'];
+        $date_updated = $vip['date_updated'];
+        $expire = $vip['expire'];
+
+        echo '<tr>
+        <td>'.$bname.'</td>
+        <td>'.$gname.'</td>
+        <td>'.$spname.'</td>
+        <td>'.$category.'</td>
+        <td>'.$price.'</td>
+        
+        <td>'.$quantity.'</td>
+        <td>'.$date_added.'</td>
+        <td>'.$date_updated.'</td>
+        <td>'.$expire.'</td>
+        <td><a href="editpurchased.php?pid='.$id.'"><span class="flaticon-edit-7"></span> </a>| <a href="deletepurchased.php?pid='.$id.'" <span class="flaticon-delete"></span></td>
+
+       
+        
+    </tr>';
+
+
+
+
+        
+    }
+
+
 }
 
 

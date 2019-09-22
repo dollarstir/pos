@@ -215,7 +215,7 @@ echo '<div class="sidebar-wrapper sidebar-theme">
                                 <a href="addt.php"> Sales Report </a>
                             </li>
                             <li>
-                                <a href="viewtea.php"> Purchased Report</a>
+                                <a href="preport.php"> Purchased Report</a>
                             </li>
                             <li>
                                 <a href="viewtea.php"> Customer   Report</a>
