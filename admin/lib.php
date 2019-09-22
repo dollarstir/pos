@@ -52,7 +52,18 @@ function product_sales() {
                     <td>'.$results['bname'].'</td>
                     <td>'.$results['remaining'].'</td>
                     <td>Gh&#8373;'.$results['price'].'</td>
-                    <td><div id="'.$results['id'].'" class="btn">Out Of Stock</div></td>
+                    <td><div style="background: red" id="'.$results['id'].'" class="btn add">Out Of Stock</div></td>
+                </tr>
+            ';
+
+        } elseif ($results['remaining'] <= 10) {
+            echo '
+                <tr style="color: red">
+                    <td>'.$results['id'].'</td>
+                    <td>'.$results['bname'].'</td>
+                    <td>'.$results['remaining'].'</td>
+                    <td>Gh&#8373;'.$results['price'].'</td>
+                    <td><div id="'.$results['id'].'" class="btn add_to_cartProduct">Add</div></td>
                 </tr>
             ';
 
@@ -109,6 +120,8 @@ if(isset($_GET) || isset($_POST)) {
 
                 } else {
 
+                    
+
                     echo '
                         <div style="border: 1px solid lightgray;" class="row report">
                             <div style="margin: 5px 0;" class="col-lg-3 col-lg-3 col-md-3 col-sm-12 col-12">
@@ -123,8 +136,25 @@ if(isset($_GET) || isset($_POST)) {
                             </div>
                             <div style="margin: 5px 0;" class="col-lg-3 col-lg-3 col-md-3 col-sm-12 col-12">
                                 Customers Name : 
-                                <input name="cname" type="text" class="form-control" placeholder="Customer\'s Name">
-                            </div>
+                                <select name="cname" class="form-control-rounded form-control" id="exampleFormControlSelect1">
+                                <option value="">Select Customer</option>';
+                                
+                                    
+                                      $getsup= mysqli_query($conn,"SELECT * FROM customers");
+                                      while ($row= mysqli_fetch_array($getsup)) {
+            
+                                          $name=$row['name'];
+                                          $id=$row['id'];
+                                          $telephone= $row['telephone'];
+                                          $both = $name.' -'.$telephone;
+                                          echo '<option value="'.$id.'">'.$both.'   </option>';
+                                      }
+                                
+                                
+                                
+                                
+                               
+                           echo' </select>                            </div>
                             <div style="margin: 5px 0;" class="col-lg-3 col-lg-3 col-md-3 col-sm-12 col-12">
                                 Amount Paid : GH&#8373;
                                 <input name="pa" type="number" class="form-control" value="0">

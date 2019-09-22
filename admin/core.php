@@ -240,14 +240,24 @@ function viewproducts(){
         $id= $vip['id'];
         $bname= $vip['bname'];
         $gname = $vip['gname'];
-        $spname = $vip['spname'];
-        $category =$vip['category'];
+        $sp = $vip['spname'];
+        $cat=$vip['category'];
         $price = $vip['price'];
         $remaining = $vip['remaining'];
         $quantity = $vip['quantity'];
         $date_added = $vip['date_added'];
         $date_updated = $vip['date_updated'];
         $expire = $vip['expire'];
+
+
+
+        $getsupp= mysqli_query($conn,"SELECT * FROM suppliers WHERE id ='$sp' ");
+                                        $gets=mysqli_fetch_array($getsupp);
+                                        $spname = $gets['name'];
+
+                                        $getcupp= mysqli_query($conn,"SELECT * FROM category WHERE id ='$cat' ");
+                                        $getc=mysqli_fetch_array($getcupp);
+                                        $category = $getc['name'];
 
         echo '<tr>
         <td>'.$bname.'</td>

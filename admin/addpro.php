@@ -15,6 +15,7 @@ include "lib.php";
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/plugins.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/css/mess.css">
+    <?php include 'core.php';?>
     <link rel="stylesheet" href="plugins/fontawesome/css/all.css">
     <link rel="stylesheet" href="plugins/sweetalerts/sweetalert2.min.css">
     <link rel="stylesheet" href="plugins/sweetalerts/sweetalert.css">
@@ -24,17 +25,8 @@ include "lib.php";
 
 
 
-<!--  BEGIN CUSTOM STYLE FILE  -->
-<link href="assets/css/ui-kit/buttons/creative/creative-icon-buttons.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/ui-kit/buttons/creative/creative-gradients.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/ui-kit/buttons/creative/creative-fill.css" rel="stylesheet" type="text/css" />
-   
-    <link href="assets/css/ui-kit/buttons/creative/creative-material.css" rel="stylesheet" type="text/css" />
-    <!-- Spinner Buttons -->
-    <link href="assets/css/ui-kit/buttons/spinner/spinner.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/ui-kit/buttons/spinner/ladda.min.css" rel="stylesheet" type="text/css" />
-    <!--  END CUSTOM STYLE FILE  -->
 
+    
 
     <!--  BEGIN CUSTOM STYLE FILE  -->
     <link rel="stylesheet" type="text/css" href="plugins/table/datatable/datatables.css">
@@ -871,30 +863,7 @@ include "lib.php";
     </div>
     <!-- END MAIN CONTAINER -->
     
-    <!--  BEGIN FOOTER  -->
-    <footer class="footer-section theme-footer">
-
-        <div class="footer-section-1 sidebar-theme">
-            
-        </div>
-
-        <div class="footer-section-2 container-fluid">
-            <div class="row">
-                
-                <div class="col-xl-5 col-md-6 col-sm-6 col-12">
-                    <ul class="list-inline mb-0 d-flex justify-content-sm-end justify-content-center mr-sm-3 ml-sm-0 mx-3">
-                        <li class="list-inline-item  mr-3">
-                            <p class="bottom-footer">© <?php echo date("Y");?> <a target="_blank" href="#">Designed by Purple Software</a></p>
-                        </li>
-                        <li class="list-inline-item align-self-center">
-                            <div class="scrollTop"><i class="flaticon-up-arrow-fill-1"></i></div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!--  END FOOTER  -->
+    <?php so();?>
 
     <!--  BEGIN CONTROL SIDEBAR  -->
     <aside class="control-sidebar control-sidebar-light-color cs-content mCustomScrollbar _mCS_1 mCS-autoHide" style="overflow: visible;"><div id="mCSB_1" class="mCustomScrollBox mCS-minimal mCSB_vertical mCSB_outside" style="max-height: none;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">

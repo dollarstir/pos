@@ -13,7 +13,7 @@ if (!isset($_SESSION['id']))
 
 }
 
-include "core.php";
+
 include "lib.php";
 
 ?>
@@ -31,6 +31,7 @@ include "lib.php";
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="assets/css/loader.css" rel="stylesheet" type="text/css" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+            <?php include 'core.php';?>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/plugins.css" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
@@ -38,6 +39,7 @@ include "lib.php";
     <!-- BEGIN PAGE LEVEL CUSTOM STYLES -->
     <link rel="stylesheet" type="text/css" href="plugins/table/datatable/datatables.css">
     <link rel="stylesheet" type="text/css" href="plugins/table/datatable/custom_dt_html5.css">
+
     <!-- END PAGE LEVEL CUSTOM STYLES -->
 </head>
 <body>
@@ -188,9 +190,7 @@ include "lib.php";
     </div>
     <!-- END MAIN CONTaAINER -->
     
-    <!--  BEGIN FOOTER  -->
-    <?php include 'footer.php';?>
-    <!--  END FOOTER  -->
+    <?php so();?>
 
     <!--  BEGIN CONTROL SIDEBAR  -->
     <aside class="control-sidebar control-sidebar-light-color cs-content">
