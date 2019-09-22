@@ -7,8 +7,7 @@ contact : +233556676471
 email: kpin463@gmail.com
 
  -->
-
-<?php 
+ <?php 
 session_start();
 include "db.php";
 
@@ -40,39 +39,44 @@ if (!isset($_SESSION['id']))
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>POS  </title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <title>Pharmacy POS- Products List </title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="assets/css/loader.css" rel="stylesheet" type="text/css" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/plugins.css" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
+        
+    <!-- BEGIN PAGE LEVEL CUSTOM STYLES -->
+    <link rel="stylesheet" type="text/css" href="plugins/table/datatable/datatables.css">
+    <link rel="stylesheet" type="text/css" href="plugins/table/datatable/custom_dt_html5.css">
+    <!-- END PAGE LEVEL CUSTOM STYLES -->
 
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-    <link href="assets/css/support-chat.css" rel="stylesheet" type="text/css" />
-    <link href="plugins/maps/vector/jvector/jquery-jvectormap-2.0.3.css" rel="stylesheet" type="text/css" />
-    <link href="plugins/charts/chartist/chartist.css" rel="stylesheet" type="text/css">
+     <!--  BEGIN CUSTOM STYLE FILE  -->
+     <link href="assets/css/ui-kit/buttons/creative/creative-icon-buttons.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/ui-kit/buttons/creative/creative-gradients.css" rel="stylesheet" type="text/css" />
     <?php include 'core.php';?>
-    <link href="assets/css/default-dashboard/style.css" rel="stylesheet" type="text/css" />    
-    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->   
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
+    <link href="assets/css/ui-kit/buttons/creative/creative-fill.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/ui-kit/buttons/creative/creative-material.css" rel="stylesheet" type="text/css" />
+    <!-- Spinner Buttons -->
+    <link href="assets/css/ui-kit/buttons/spinner/spinner.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/ui-kit/buttons/spinner/ladda.min.css" rel="stylesheet" type="text/css" />
+    <!--  END CUSTOM STYLE FILE  -->
 </head>
-<body class="default-sidebar">
+<body>
     <div id="eq-loader">
       <div class="eq-loader-div">
           <div class="eq-loading dual-loader mx-auto mb-5"></div>
       </div>
     </div>
-
     <!-- Tab Mobile View Header -->
     <header class="tabMobileView header navbar fixed-top d-lg-none">
         <div class="nav-toggle">
                 <a href="javascript:void(0);" class="nav-link sidebarCollapse" data-placement="bottom">
                     <i class="flaticon-menu-line-2"></i>
                 </a>
-            <a href="index.html" class=""> <img src="assets/img/log2.png" class="img-fluid" alt="logo" width="70px" height="70px"></a>
+            <a href="index-2.html" class=""> <img src="assets/img/logo-3.png" class="img-fluid" alt="logo"></a>
         </div>
         <ul class="nav navbar-nav">
             <li class="nav-item d-lg-none"> 
@@ -131,12 +135,9 @@ if (!isset($_SESSION['id']))
             
         </ul>
     </header>
-    <!--  END NAVBAR  -->
 
     <!--  BEGIN MAIN CONTAINER  -->
-    <div class="main-container" i
-    d="container">
-
+    <div class="main-container" id="container">
         <div class="overlay"></div>
         <div class="cs-overlay"></div>
 
@@ -145,150 +146,79 @@ if (!isset($_SESSION['id']))
         <?php include "sidebar.php";?>
 
         <!--  END SIDEBAR  -->
-        
+
         <!--  BEGIN CONTENT PART  -->
         <div id="content" class="main-content">
             <div class="container">
-                <div class="page-header">
+                <!-- <div class="page-header">
                     <div class="page-title">
-                        <h3>Dashboard</h3>
+                        <h3>HTML5 Export</h3>
+                        <div class="crumbs">
+                            <ul id="breadcrumbs" class="breadcrumb">
+                                <li><a href="index-2.html"><i class="flaticon-home-fill"></i></a></li>
+                                <li><a href="#">Tables</a></li>
+                                <li><a href="#">DataTables</a> </li>
+                                <li class="active"><a href="#">HTML5 Export</a> </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
-                <div class="row layout-spacing ">
-
-                    
-                    <div class="col-xl-3 mb-xl-0 col-lg-6 mb-4 col-md-6 col-sm-6">
-                        <div class="widget-content-area  data-widgets br-4">
-                            <div class="widget  t-order-widget" id="getorder">
-                                <!-- <div class="media">
-                                    <div class="icon ml-2">
-                                        <i class="flaticon-cart-bag"></i>
-                                    </div>
-                                    <div class="media-body text-right">
-                                        <p class="widget-text mb-0">Orders</p> -->
-
-                                        <?php  
-                                        // $co=mysqli_query($conn,"SELECT * FROM orders ");
-                                        // $result3=mysqli_num_rows($co);
-
-                                        // if ($result3 >= 1) {
-
-                                        //     echo '<p class="widget-numeric-value">'.$result3.'</p>
-                                        //     </div>
-                                        // </div>
-                                        // <p class="widget-total-stats mt-2"> '.$result3.'  total Orders</p>';
-                                          
+                </div> -->
+                
+                <div class="row" id="cancel-row">
+                
+                    <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-header">
+                                <div class="row">
+                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                        <center><h4>ALL PRODUCTS</h4></center>
+                                    </div>                 
+                                </div>
+                            </div>
+                            <div class="widget-content widget-content-area">
+                                <div class="table-responsive mb-4">
+                                    <table id="html5-extension" class="table table-striped table-bordered table-hover" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Brand Name</th>
+                                                <th>Genetic Name</th>
+                                                <th>Supplier Namne</th>
+                                                <th>Category</th>
+                                                <th>Price</th>
+                                                <th>Remaining</th>
+                                                <th>Quantity</th>
+                                                <th>Date Added</th>
+                                                <th>Last Updated</th>
+                                                <th>Expiration</th>
+                                                <!-- <th class="invisible"></th> -->
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php 
                                         
-                                        // }else {
-                                        //     echo '<p class="widget-numeric-value">0</p>
-                                        //     </div>
-                                        // </div>
-                                        // <p class="widget-total-stats mt-2"> No  ticket Ordered</p>';
-                                        // }
+                                       
+                                        echo viewproducts();
+                                        // <td><a href="#" class="btn btn-c-gradient-5 btn-rounded  mb-4 mr-3">Danger</a>| <span class="flaticon-delete"></span></td>
 
+                                        
                                         ?>
-                                        
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 mb-sm-0 mb-4">
-                        <div class="widget-content-area  data-widgets br-4">
-                            <div class="widget  t-customer-widget" id="tsold">
-                               
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-
-
-                                            <!-- percentage wag -->
-
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 mb-sm-0 mb-4">
-                        <div class="widget-content-area  data-widgets br-4">
-                            <div class="widget  t-income-widget" id="vavl">
-                               
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                                            <!-- percentage w -->
-
-
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-                        
-                        <div class="widget-content-area  data-widgets br-4">
-                            <div class="widget  t-income-widget" id="tdy">
-                                                                       
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
-
-                
-
-                            <!-- begin form -->
-                
-
-                
-
-                
-
-                
-
-                
-
-               
 
             </div>
         </div>
         <!--  END CONTENT PART  -->
-
     </div>
     <!-- END MAIN CONTAINER -->
-
-    <!--  BEGIN CHAT  -->
-    <div id="chat">
-        
-        <div class="chat-box">
-            <div class="chat-box-header">
-                <div class="media">
-                    <i class="flaticon-chat-fill-1 chat align-self-center mr-3"></i>
-                    <img src="assets/img/profile-3.jpg" class="rounded-circle mr-2 mt-2" alt="user">
-                    <div class="media-body">
-                        <h6 class="mt-2 mb-1"> Admin</h6>
-                        <p>How May I help you ?</p>
-                    </div>
-                    <span class="chat-box-toggle mt-1"><i class="flaticon-close-fill"></i></span>
-                </div>
-            </div>
-            <div class="chat-box-body">
-                <div class="chat-box-overlay">
-                </div>
-                <div class="chat-logs">
-                </div>
-            </div>
-            <div class="chat-input">
-                <form>
-                    <input type="text" id="chat-input" placeholder="Send a message...">
-                    <button type="submit" class="chat-submit" id="chat-submit"><i class="flaticon-send-fill-1 chat"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!--  END CHAT  -->
-
+    
     <?php  so()?>
 
     <!--  BEGIN CONTROL SIDEBAR  -->
@@ -1097,7 +1027,7 @@ if (!isset($_SESSION['id']))
         </div>
     </aside>
     <!--  END CONTROL SIDEBAR  -->
-
+    
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <script src="assets/js/libs/jquery-3.1.1.min.js"></script>
     <script src="assets/js/loader.js"></script>
@@ -1105,6 +1035,7 @@ if (!isset($_SESSION['id']))
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="plugins/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="assets/js/app.js"></script>
+    
     <script>
         $(document).ready(function() {
             App.init();
@@ -1113,36 +1044,35 @@ if (!isset($_SESSION['id']))
     <script src="assets/js/custom.js"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
 
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-    <script src="plugins/charts/chartist/chartist.js"></script>
-    <script src="plugins/maps/vector/jvector/jquery-jvectormap-2.0.3.min.js"></script>
-    <script src="plugins/maps/vector/jvector/worldmap_script/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="plugins/calendar/pignose/moment.latest.min.js"></script>
-    <script src="plugins/calendar/pignose/pignose.calendar.js"></script>
-    <script src="plugins/progressbar/progressbar.min.js"></script>
-    <script src="assets/js/default-dashboard/default-custom.js"></script>
-    <script src="assets/js/support-chat.js"></script>
-
+    <!-- BEGIN PAGE LEVEL CUSTOM SCRIPTS -->
+    <script src="plugins/table/datatable/datatables.js"></script>
+    <!-- NOTE TO Use Copy CSV Excel PDF Print Options You Must Include These Files  -->
+    <script src="plugins/table/datatable/button-ext/dataTables.buttons.min.js"></script>
+    <script src="plugins/table/datatable/button-ext/jszip.min.js"></script>    
+    <script src="plugins/table/datatable/button-ext/buttons.html5.min.js"></script>
+    <script src="plugins/table/datatable/button-ext/buttons.print.min.js"></script>
     <script>
-    
-        $(document).ready(function () {
-            
-
-            setInterval(() => {
-                
-
-
-                $("#getorder").load('tts.php');
-                $("#tsold").load('soldv.php');
-                $("#vavl").load('vav.php');
-                $("#tdy").load('stoday.php');
-                
-            }, 1000);
-            
-        });
-    
+        $('#html5-extension').DataTable( {
+            dom: '<"row"<"col-md-12"<"row"<"col-md-6"B><"col-md-6"f> > ><"col-md-12"rt> <"col-md-12"<"row"<"col-md-5 mb-md-0 mb-5"i><"col-md-7"p>>> >',
+            buttons: {
+                buttons: [
+                    { extend: 'copy', className: 'btn btn-default btn-rounded btn-sm mb-4' },
+                    { extend: 'csv', className: 'btn btn-default btn-rounded btn-sm mb-4' },
+                    { extend: 'excel', className: 'btn btn-default btn-rounded btn-sm mb-4' },
+                    { extend: 'print', className: 'btn btn-default btn-rounded btn-sm mb-4' }
+                ]
+            },
+            "language": {
+                "paginate": {
+                  "previous": "<i class='flaticon-arrow-left-1'></i>",
+                  "next": "<i class='flaticon-arrow-right'></i>"
+                },
+                "info": "Showing page _PAGE_ of _PAGES_"
+            }
+        } );
     </script>
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+    <!-- END PAGE LEVEL CUSTOM SCRIPTS -->
 </body>
 
+<!-- Mirrored from designreset.com/preview-equation/default/table_dt_html5.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 May 2019 14:27:30 GMT -->
 </html>

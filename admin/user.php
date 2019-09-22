@@ -20,11 +20,13 @@ if (!isset($_SESSION['id']))
 
 
 
+
+
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Add Customer</title>
+    <title>Add User</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="assets/css/loader.css" rel="stylesheet" type="text/css">
@@ -1708,39 +1710,46 @@ if (!isset($_SESSION['id']))
                             <div class="widget-header">                                
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                       <center> <u><h4>Add Customer</h4></u></center>
+                                       <center> <u><h4>Add User</h4></u></center>
                                     </div>                                                      
                                 </div>
                             </div>
                             <div class="widget-content widget-content-area">
-                                <form class="adcust">
+                                <form class="adduse">
                                    
                                     <div class="form-group mb-4">
                                         <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="name" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Supplier's Name">
+                                        <input name="name" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Name">
                                     </div>
 
 
                                     <div class="form-group mb-4">
                                         <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="address" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Address">
+                                        <input name="email" type="email" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Email Address">
                                     </div>
 
-                                    
+                                    <div class="form-group mb-4">
+                                      
+                                      <select name="type" class="form-control-rounded form-control" id="exampleFormControlSelect1">
+                                          <option value="">Select User Type</option>
+                                          <option value="admin">Admin</option>
+                                          <option value="user">Sale Person (pharmacist)</option>
+                                          
+                                          
+                                          
+                                          
+                                         
+                                      </select>
+                                  </div>
 
 
-                                 
+                                  
 
                                     <div class="form-group mb-4">
                                         <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="telephone" type="number" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Phone Number  ">
+                                        <input name="password" type="password" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="enter new password  ">
                                     </div>
 
-
-                                    <div class="form-group mb-4">
-                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="fax" type="number" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="fax">
-                                    </div>
 
                                     
 
@@ -1750,7 +1759,7 @@ if (!isset($_SESSION['id']))
 
                                     
                                    
-                                    <input type="submit" name="subcus" class="mt-4 mb-4 btn btn-button-7 btn-rounded sub" value="Add Customer" style="margin-left:150px;background-color:green !important;">
+                                    <input type="submit" name="subc" class="mt-4 mb-4 btn btn-button-7 btn-rounded sub" value="Add Product" style="margin-left:150px;background-color:green !important;">
 
                                     <div id="respo">
                                     <!-- <div id="mess"><p>Voucher generated and saved successfully</p></div> -->

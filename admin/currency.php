@@ -20,16 +20,25 @@ if (!isset($_SESSION['id']))
 
 
 
+
+
+
+
+
+
+
+
+
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Add Customer</title>
+    <title>Edit Currency</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="assets/css/loader.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
     <?php include 'core.php';?>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/plugins.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/css/mess.css">
@@ -1708,22 +1717,35 @@ if (!isset($_SESSION['id']))
                             <div class="widget-header">                                
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                       <center> <u><h4>Add Customer</h4></u></center>
+                                       <center> <u><h4>Update Currency</h4></u></center>
                                     </div>                                                      
                                 </div>
                             </div>
                             <div class="widget-content widget-content-area">
-                                <form class="adcust">
+                            <?php 
+                                include 'db.php';
+                                $getcurrency = mysqli_query($conn,"SELECT * FROM currency WHERE id= '1' ");
+                                $get = mysqli_fetch_array($getcurrency);
+                                $name = $get['currency_name'];
+                                $symbol = $get['symbol'];
+                            
+                            ?>
+
+                              <label for="exampleFormControlInput1">Current Currency:  <?php echo $name;?></label><br>
+                              <label for="exampleFormControlInput1">Current symbol:  <?php echo $symbol;?></label><br>
+
+
+                                <form class="adcurr">
                                    
                                     <div class="form-group mb-4">
                                         <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="name" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Supplier's Name">
+                                        <input name="currency_name" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Currency name eg: (US Dollars)">
                                     </div>
 
 
                                     <div class="form-group mb-4">
                                         <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="address" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Address">
+                                        <input name="symbol" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Symbol eg: $">
                                     </div>
 
                                     
@@ -1731,16 +1753,7 @@ if (!isset($_SESSION['id']))
 
                                  
 
-                                    <div class="form-group mb-4">
-                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="telephone" type="number" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Phone Number  ">
-                                    </div>
-
-
-                                    <div class="form-group mb-4">
-                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="fax" type="number" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="fax">
-                                    </div>
+                                   
 
                                     
 
@@ -1750,7 +1763,7 @@ if (!isset($_SESSION['id']))
 
                                     
                                    
-                                    <input type="submit" name="subcus" class="mt-4 mb-4 btn btn-button-7 btn-rounded sub" value="Add Customer" style="margin-left:150px;background-color:green !important;">
+                                    <input type="submit" name="subc" class="mt-4 mb-4 btn btn-button-7 btn-rounded sub" value="Update Currency" style="margin-left:150px;background-color:green !important;">
 
                                     <div id="respo">
                                     <!-- <div id="mess"><p>Voucher generated and saved successfully</p></div> -->

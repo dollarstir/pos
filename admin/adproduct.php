@@ -1,3 +1,25 @@
+
+<?php 
+session_start();
+include "db.php";
+
+
+
+if (!isset($_SESSION['id']))
+
+{
+
+
+    echo '<script>window.location="index.php"</script>';
+
+}
+
+
+
+?>
+
+
+
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +29,7 @@
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="assets/css/loader.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
+    <?php include 'core.php';?>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/plugins.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/css/mess.css">
@@ -1690,7 +1713,7 @@
                                 </div>
                             </div>
                             <div class="widget-content widget-content-area">
-                                <form class="subcourse">
+                                <form class="adprod">
                                    
                                     <div class="form-group mb-4">
                                         <!-- <label for="exampleFormControlInput1">Quantity</label> -->
@@ -1707,9 +1730,20 @@
                                       
                                       <select name="spname" class="form-control-rounded form-control" id="exampleFormControlSelect1">
                                           <option value="">Select Supplier</option>
-                                          <option value="Beginner">Beginner  </option>
-                                          <option value="Intermediate">Intermediate</option>
-                                          <option value="Advanced">Advanced  </option>
+                                          <?php 
+                                                include "db.php";
+                                                $getsup= mysqli_query($conn,"SELECT* FROM suppliers");
+                                                while ($row= mysqli_fetch_array($getsup)) {
+
+                                                    $name=$row['name'];
+                                                    $id=$row['id'];
+                                                    $telephone= $row['telephone'];
+                                                    $both = $name.' -'.$telephone;
+                                                    echo '<option value="'.$id.'">'.$both.'   </option>';
+                                                }
+                                          ?>
+                                          
+                                          
                                           
                                          
                                       </select>
@@ -1720,9 +1754,18 @@
                                       
                                       <select name="category" class="form-control-rounded form-control" id="exampleFormControlSelect1">
                                           <option value="">Choose category</option>
-                                          <option value="Beginner">Beginner  </option>
-                                          <option value="Intermediate">Intermediate</option>
-                                          <option value="Advanced">Advanced  </option>
+                                          <?php 
+                                                include "db.php";
+                                                $getcat= mysqli_query($conn,"SELECT* FROM category");
+                                                while ($row1= mysqli_fetch_array($getcat)) {
+
+                                                    $name=$row1['name'];
+                                                    $id=$row1['id'];
+                                                    
+                                                   
+                                                    echo '<option value="'.$id.'">'.$name.'   </option>';
+                                                }
+                                          ?>
                                           
                                          
                                       </select>
@@ -1741,7 +1784,7 @@
 
                                     <div class="form-group mb-4">
                                         <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="date_added" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Date Added" readonly>
+                                        <input name="date_added" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" value="<?php echo date("m/d/Y");?>" readonly>
                                     </div>
                                     <div class="form-group mb-4">
                                         <label for="exampleFormControlInput1">Expiration Date</label>
@@ -2051,30 +2094,7 @@
     </div>
     <!-- END MAIN CONTAINER -->
     
-    <!--  BEGIN FOOTER  -->
-    <footer class="footer-section theme-footer">
-
-        <div class="footer-section-1 sidebar-theme">
-            
-        </div>
-
-        <div class="footer-section-2 container-fluid">
-            <div class="row">
-                
-                <div class="col-xl-5 col-md-6 col-sm-6 col-12">
-                    <ul class="list-inline mb-0 d-flex justify-content-sm-end justify-content-center mr-sm-3 ml-sm-0 mx-3">
-                        <li class="list-inline-item  mr-3">
-                            <p class="bottom-footer">© <?php echo date("Y");?> <a target="_blank" href="#">Designed by Purple Software</a></p>
-                        </li>
-                        <li class="list-inline-item align-self-center">
-                            <div class="scrollTop"><i class="flaticon-up-arrow-fill-1"></i></div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!--  END FOOTER  -->
+    <?php  so()?>
 
     <!--  BEGIN CONTROL SIDEBAR  -->
     <aside class="control-sidebar control-sidebar-light-color cs-content mCustomScrollbar _mCS_1 mCS-autoHide" style="overflow: visible;"><div id="mCSB_1" class="mCustomScrollBox mCS-minimal mCSB_vertical mCSB_outside" style="max-height: none;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">

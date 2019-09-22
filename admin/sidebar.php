@@ -1,6 +1,9 @@
 
 <?php 
-
+include 'db.php';
+$getname=mysqli_query($conn,"SELECT * FROM title ");
+$row =mysqli_fetch_array($getname);
+$appname=$row['app_name'];
 
 echo '<div class="sidebar-wrapper sidebar-theme">
             
@@ -9,14 +12,9 @@ echo '<div class="sidebar-wrapper sidebar-theme">
             <nav id="sidebar">
 
                 <ul class="navbar-nav theme-brand flex-row  d-none d-lg-flex">
-                    <li class="nav-item d-flex">
-                        <a href="home.php" class="navbar-brand">
-                            <img src="assets/img/log2.png" class="img-fluid" alt="logo" width="70px" height="70px">
-                        </a>
-                        <p class="border-underline"></p>
-                    </li>
+                   
                     <li class="nav-item theme-text">
-                        <a href="home.php" class="nav-link"> Pharmacy </a>
+                        <a href="home.php" class="nav-link">'.$appname.'</a>
                     </li>
                 </ul>
 
@@ -58,7 +56,7 @@ echo '<div class="sidebar-wrapper sidebar-theme">
                                 <a href="adproduct.php"> Add products </a>
                             </li>
                             <li>
-                            <a href="vap.php"> View products </a>
+                            <a href="viewproduct.php"> View products </a>
                         </li>
 
                            
@@ -119,7 +117,7 @@ echo '<div class="sidebar-wrapper sidebar-theme">
                                 <a href="adcategory.php"> Add Category </a>
                             </li>
                             <li>
-                                <a href="#"> View Category </a>
+                                <a href="viewcategory.php"> View Category </a>
                             </li>
                             
                            
@@ -143,7 +141,7 @@ echo '<div class="sidebar-wrapper sidebar-theme">
                                 <a href="adsupplier.php">Add Suppliers</a>
                             </li>
                             <li>
-                                <a href="vvol.php"> View  Suppliers</a>
+                                <a href="viewsuppliers.php"> View  Suppliers</a>
                             </li>
 
                            
@@ -171,7 +169,7 @@ echo '<div class="sidebar-wrapper sidebar-theme">
                                 <a href="adcustomer.php"> Add Customers </a>
                             </li>
                             <li>
-                                <a href="element_steps.html"> View Customers </a>
+                                <a href="viewcustomers.php"> View Customers </a>
                             </li>
                            
                         </ul>
@@ -195,7 +193,7 @@ echo '<div class="sidebar-wrapper sidebar-theme">
                                 <a href="adpurchase.php"> Add Purchases </a>
                             </li>
                             <li>
-                                <a href="editor_quill.html">View  Purchases </a>
+                                <a href="viewpurchases.php">View  Purchases </a>
                             </li>
                             
                         </ul>
@@ -244,24 +242,18 @@ echo '<div class="sidebar-wrapper sidebar-theme">
                             
                             
                             <li>
-                                <a href="#"> Title </a>
+                                <a href="apptitle.php"> App title </a>
                             </li>
                             <li>
-                                <a href="#"> Users </a>
+                                <a href="user.php"> User </a>
                             </li>
 
+                          
                             <li>
-                                <a href="#"> App </a>
+                                <a href="currency.php"> Currency </a>
                             </li>
-                            <li>
-                                <a href="#"> Currency </a>
-                            </li>
-                            <li>
-                                <a href="#"></a>
-                            </li>
-                            <li>
-                                <a href="#"> OpenLayers </a>
-                            </li>
+                            
+                            
                             
                         </ul>
                     </li>

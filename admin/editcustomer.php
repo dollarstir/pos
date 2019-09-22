@@ -1,41 +1,20 @@
-<?php 
-session_start();
-include "db.php";
-
-
-
-if (!isset($_SESSION['id']))
-
-{
-
-
-    echo '<script>window.location="index.php"</script>';
-
-}
-
-
-
-?>
-
-
-
-
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Add Customer</title>
+    <title>Edit Customer</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="assets/css/loader.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
     <?php include 'core.php';?>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/plugins.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/css/mess.css">
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!--  BEGIN CUSTOM STYLE FILE  -->
+   
     <style>
         .form-control {
             border: 1px solid #ccc;
@@ -1708,22 +1687,42 @@ if (!isset($_SESSION['id']))
                             <div class="widget-header">                                
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                       <center> <u><h4>Add Customer</h4></u></center>
+                                       <center> <u><h4>Edit Supplier</h4></u></center>
                                     </div>                                                      
                                 </div>
                             </div>
                             <div class="widget-content widget-content-area">
-                                <form class="adcust">
+
+                            <?php
+                                        include 'db.php';
+                                        $id = $_GET['pid'];
+                                        $getpro= mysqli_query($conn,"SELECT * FROM suppliers WHERE id= '$id' ");
+                                        $vip= mysqli_fetch_array($getpro);
+                                        $id= $vip['id'];
+                                        $name= $vip['name'];
+                                        $address = $vip['address'];
+                                        $telephone= $vip['telephone'];
+                                        $fax= $vip['fax'];
+                                        
+                                      
+                                        
+
+                                        
+
+                                    ?>
+                                <form class="updsu">
                                    
                                     <div class="form-group mb-4">
                                         <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="name" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Supplier's Name">
+                                        <input name="name" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Supplier's Name" value="<?php echo $name;?>">
                                     </div>
+                                    <input name="id" type="hidden" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Supplier's Name" value="<?php echo $id;?>">
+
 
 
                                     <div class="form-group mb-4">
                                         <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="address" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Address">
+                                        <input name="address" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Address" value="<?php echo $address;?>">
                                     </div>
 
                                     
@@ -1733,13 +1732,13 @@ if (!isset($_SESSION['id']))
 
                                     <div class="form-group mb-4">
                                         <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="telephone" type="number" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Phone Number  ">
+                                        <input name="telephone" type="number" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Phone Number"  value="<?php echo $telephone;?>">
                                     </div>
 
 
                                     <div class="form-group mb-4">
                                         <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="fax" type="number" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="fax">
+                                        <input name="fax" type="number" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="fax" value="<?php echo $fax;?>">
                                     </div>
 
                                     
@@ -1750,7 +1749,7 @@ if (!isset($_SESSION['id']))
 
                                     
                                    
-                                    <input type="submit" name="subcus" class="mt-4 mb-4 btn btn-button-7 btn-rounded sub" value="Add Customer" style="margin-left:150px;background-color:green !important;">
+                                    <input type="submit" name="subc" class="mt-4 mb-4 btn btn-button-7 btn-rounded sub" value="Update Supplier" style="margin-left:150px;background-color:green !important;">
 
                                     <div id="respo">
                                     <!-- <div id="mess"><p>Voucher generated and saved successfully</p></div> -->

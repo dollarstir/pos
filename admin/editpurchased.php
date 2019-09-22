@@ -1,3 +1,4 @@
+
 <?php 
 session_start();
 include "db.php";
@@ -13,23 +14,18 @@ if (!isset($_SESSION['id']))
 
 }
 
-
+include "core.php";
 
 ?>
-
-
-
-
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Add Customer</title>
+    <title>Edit Product</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="assets/css/loader.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
-    <?php include 'core.php';?>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/plugins.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/css/mess.css">
@@ -1708,41 +1704,122 @@ if (!isset($_SESSION['id']))
                             <div class="widget-header">                                
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                       <center> <u><h4>Add Customer</h4></u></center>
+                                       <center> <u><h4>Edit Product</h4></u></center>
                                     </div>                                                      
                                 </div>
                             </div>
                             <div class="widget-content widget-content-area">
-                                <form class="adcust">
+
+                                    <?php
+                                        include 'db.php';
+                                        $id = $_GET['pid'];
+                                        $getpro= mysqli_query($conn,"SELECT * FROM purchased WHERE id= '$id' ");
+                                        $vip= mysqli_fetch_array($getpro);
+                                        $id= $vip['id'];
+                                        $bname= $vip['bname'];
+                                        $gname = $vip['gname'];
+                                        $sp = $vip['spname'];
+                                      
+                                        $cat =$vip['category'];
+                                        $price = $vip['price'];
+                                        $remaining = $vip['remaining'];
+                                        $quantity = $vip['quantity'];
+                                        $date_added = $vip['date_added'];
+                                        $date_updated = $vip['date_updated'];
+                                        $expire = $vip['expire'];
+
+                                        $getsupp= mysqli_query($conn,"SELECT * FROM suppliers WHERE id ='$sp' ");
+                                        $gets=mysqli_fetch_array($getsupp);
+                                        $spname = $gets['name'];
+
+                                        $getcupp= mysqli_query($conn,"SELECT * FROM category WHERE id ='$cat' ");
+                                        $getc=mysqli_fetch_array($getcupp);
+                                        $category = $getc['name'];
+
+                                    ?>
+                                <form class="uppurch">
                                    
                                     <div class="form-group mb-4">
-                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="name" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Supplier's Name">
+                                        <label for="exampleFormControlInput1">Brand Name</label>
+                                        <input name="bname" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" value="<?php echo $bname ;?>">
+                                    </div>
+
+                                    <input name="id" type="hidden" class="form-control-rounded form-control" id="exampleFormControlInput1" value="<?php echo $id ;?>">
+
+
+
+                                    <div class="form-group mb-4">
+                                        <label for="exampleFormControlInput1">Genetic Name</label>
+                                        <input name="gname" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Genetic Name" value="<?php echo $gname ;?>">
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                    <label for="exampleFormControlInput1">Supplier's Name</label>
+                                      
+                                      <select name="spname" class="form-control-rounded form-control" id="exampleFormControlSelect1">
+                                          <option value="<?php echo $spname ;?>"><?php echo $spname ;?></option>
+                                          <?php 
+                                                include "db.php";
+                                                $getsup= mysqli_query($conn,"SELECT* FROM suppliers");
+                                                while ($row= mysqli_fetch_array($getsup)) {
+
+                                                    $name=$row['name'];
+                                                    $id=$row['id'];
+                                                    $telephone= $row['telephone'];
+                                                    $both = $name.' -'.$telephone;
+                                                    echo '<option value="'.$id.'">'.$both.'   </option>';
+                                                }
+                                          ?>
+                                          
+                                          
+                                          
+                                         
+                                      </select>
+                                  </div>
+
+
+                                  <div class="form-group mb-4">
+                                  <label for="exampleFormControlInput1">Category</label>
+                                      <select name="category" class="form-control-rounded form-control" id="exampleFormControlSelect1">
+                                          <option value="<?php echo $category ;?>"><?php echo $category ;?></option>
+                                          <?php 
+                                                include "db.php";
+                                                $getcat= mysqli_query($conn,"SELECT* FROM category");
+                                                while ($row1= mysqli_fetch_array($getcat)) {
+
+                                                    $name=$row1['name'];
+                                                    $id=$row1['id'];
+                                                    
+                                                   
+                                                    echo '<option value="'.$id.'">'.$name.'   </option>';
+                                                }
+                                          ?>
+                                          
+                                         
+                                      </select>
+                                  </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="exampleFormControlInput1">Unit Price</label>
+                                        <input name="price" type="number" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Unit Price" value="<?php echo $price ;?>">
                                     </div>
 
 
                                     <div class="form-group mb-4">
-                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="address" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Address">
+                                        <label for="exampleFormControlInput1"> Total Quantity</label>
+                                        <input name="quantity" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Quantity" value="<?php echo $quantity ;?>">
                                     </div>
 
                                     
 
-
-                                 
-
                                     <div class="form-group mb-4">
-                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="telephone" type="number" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Phone Number  ">
+                                        <label for="exampleFormControlInput1">Date Added</label>
+                                        <input name="date_added" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" value="<?php echo $date_added ;?>" readonly>
                                     </div>
-
-
                                     <div class="form-group mb-4">
-                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="fax" type="number" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="fax">
+                                        <label for="exampleFormControlInput1">Expiration Date</label>
+                                        <input name="expire" type="date" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Expiration Date" value="<?php echo $expire ;?>">
                                     </div>
-
-                                    
 
 
 
@@ -1750,7 +1827,7 @@ if (!isset($_SESSION['id']))
 
                                     
                                    
-                                    <input type="submit" name="subcus" class="mt-4 mb-4 btn btn-button-7 btn-rounded sub" value="Add Customer" style="margin-left:150px;background-color:green !important;">
+                                    <input type="submit" name="subc" class="mt-4 mb-4 btn btn-button-7 btn-rounded sub" value="Update Product" style="margin-left:150px;background-color:green !important;">
 
                                     <div id="respo">
                                     <!-- <div id="mess"><p>Voucher generated and saved successfully</p></div> -->
@@ -2047,7 +2124,30 @@ if (!isset($_SESSION['id']))
     </div>
     <!-- END MAIN CONTAINER -->
     
-    <?php  so()?>
+    <!--  BEGIN FOOTER  -->
+    <footer class="footer-section theme-footer">
+
+        <div class="footer-section-1 sidebar-theme">
+            
+        </div>
+
+        <div class="footer-section-2 container-fluid">
+            <div class="row">
+                
+                <div class="col-xl-5 col-md-6 col-sm-6 col-12">
+                    <ul class="list-inline mb-0 d-flex justify-content-sm-end justify-content-center mr-sm-3 ml-sm-0 mx-3">
+                        <li class="list-inline-item  mr-3">
+                            <p class="bottom-footer">© <?php echo date("Y");?> <a target="_blank" href="#">Designed by Purple Software</a></p>
+                        </li>
+                        <li class="list-inline-item align-self-center">
+                            <div class="scrollTop"><i class="flaticon-up-arrow-fill-1"></i></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--  END FOOTER  -->
 
     <!--  BEGIN CONTROL SIDEBAR  -->
     <aside class="control-sidebar control-sidebar-light-color cs-content mCustomScrollbar _mCS_1 mCS-autoHide" style="overflow: visible;"><div id="mCSB_1" class="mCustomScrollBox mCS-minimal mCSB_vertical mCSB_outside" style="max-height: none;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
