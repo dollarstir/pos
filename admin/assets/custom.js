@@ -3,23 +3,28 @@ $(document).ready(function() {
         $(".customCont").fadeOut(500);
     })
 
+    $(document).on("keyup change", "input[name='pa']", function () {
+        var pa = $(this).val();
+        var gtotal = $(".gtotal").html();
+
+        bal = gtotal - pa;
+
+        $("#balance").html(bal);
+    })
+
     function sales_cart_count() {
 
-        var num_sales_price = document.getElementsByClassName("partCost");
+        var num_sales_price = $(".partCost");
         var prev = 0;
 
         num_sales_price.innerHTML = 0;
 
-        for (const key in num_sales_price) {
-            var count = num_sales_price[key].innerHTML;
-            count = parseInt(count);
+        num_sales_price.each(function () {
+            var count = $(this).html()
 
-            if(Number.isInteger(count)) {
-                count = prev + count;
-                prev = count;
-            } 
-            
-        }
+            count = parseFloat(prev) + parseFloat(count);
+            prev = count;
+        })
 
         document.getElementsByClassName("grandCost")[0].innerHTML = prev;
     }
@@ -46,7 +51,7 @@ $(document).ready(function() {
         var elem = $(this).parent().parent().children(".col").children(".partCost");
       
 
-        sales_item_price(elem, parseInt(price), parseInt(val));
+        sales_item_price(elem, price, val);
     })
 
     $(document).on("click", ".add_to_cartProduct", function() {
@@ -71,16 +76,12 @@ $(document).ready(function() {
         var targets = {};
         var grandCost = $(".grandCost").html();
         var form_report = $('.quan_input');
-        var ind = 0;
 
         form_report.each(function() {
             var ids = $(this).attr("id");
             var value = $(this).val();
             
-            targets[ind] = [ids, value];
-
-            ind++;
-
+            targets[ids] = value;
         })
 
         if(parseInt(grandCost) > 0) {
@@ -107,29 +108,39 @@ $(document).ready(function() {
     })
 
     $(document).on("click", ".submitreport", function() {
-        var targets = [];
+        var targets = {};
         var index;
 
-        $(".report").each(function() {
-            var targets2 = {};
+        var customerID = $("select[name='cname']").val();
+        var pa = $("input[name='pa']").val();
+        var gt = $(".gtotal").html();
 
-            var id = $(this).children("div").children("input[name='id']").val();
-            var quantity = $(this).children("div").children("input[name='quantity']").val();
-            var gt = $(this).children("div").children("input[name='gt']").val();
-            var cname = $(this).children("div").children("select[name='cname']").val();
-            var pa = $(this).children("div").children("input[name='pa']").val();
+        targets['id'] = customerID;
+        targets['pa'] = pa;
+        targets['gt'] = gt;
 
-            targets2 = {
-                id: id,
-                quantity: quantity,
-                gt: gt,
-                cname: cname,
-                pa: pa
-            }
+        if(customerID <= 0) {
+            Swal.fire({
+                type: 'warning',
+                text: 'Please select a customer!!',
+            })
 
-            targets.push(targets2)
+        } else {
+            var product_details = $(".product_details");
+            targets['stuff'] = [];
 
-        })
+            product_details.each(function() {
+                var product = $(this).attr('id');
+                var quantity = $(this).children(".quantity").html();
+
+                dict_pro = {
+                    product: product,
+                    quantity: quantity
+                }
+
+                targets['stuff'].push(dict_pro);
+            })
+        }
 
         var info = {
             target: targets,
@@ -141,14 +152,33 @@ $(document).ready(function() {
             type: 'post',
             data: info,
             dataType: 'json',
-            success: function(response) {
+            success: function(responseGen) {
+                response = responseGen[0];
                 if(response.includes('success') && (!response.includes('error') || !response.includes('invalid') || !response.includes('empty'))) {
+                    response2 = responseGen['return'];
+
                     Swal.fire({
                         type: 'success',
                         text: 'Added Sale Successfully',
                         
                     }).then(function() {
-                        location.reload();
+                        Swal.fire({
+                            type: 'warning',
+                            text: 'Do you want to print this report?',
+                            showCancelButton: true,
+                            confirmButtonColor: '#DD6B55',
+                            confirmButtonText: 'Yes',
+                            cancelButtonText: "No",
+                              
+                        }).then(function(isConfirm) {
+                            if(isConfirm.value) {
+                                window.location = 'invoice-print.php?target='+response2;
+                            } else {
+                                location.reload();
+                            }
+                            
+                        })
+                        
                     });
 
                     $(".customCont").fadeOut(500);

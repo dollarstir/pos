@@ -71,7 +71,7 @@ include "lib.php";
             width: 70%;
         }
 
-        .customCont {display: none;max-height: 80vh;position: fixed; z-index: 1059; margin: 20px 0; left: 50%; transform: translateX(-50%);overflow: auto;}
+        .customCont {display: none;max-height: 90vh;position: fixed; z-index: 1059; margin: 20px 0; left: 50%; transform: translateX(-50%);overflow: auto;}
 
         .closePop:hover {
             box-shadow: 0 0 5px gray;
@@ -84,21 +84,10 @@ include "lib.php";
     <div class="container customCont">
         <div class="closePop" style="background: lightgray; display: inline-block;padding: 2px 5px;border: 0.3px solid red"><i style="color: black" class="fa fa-times fa-2x"></i></div>
 
-        <div class="statbox widget box box-shadow layout-spacing">
-            <div style="box-shadow: 0 0 10px gray;" class="widget-content widget-content-area">
+        <div class="return">
 
-                <div class="layout-spacing return">
-          
-
-
-                </div>
-
-                <div class="row">
-                    <div class="submitreport btn btn-primary">Add to Report</div>
-                </div>
-
-            </div>
         </div>
+        
     </div>
 
     <div id="eq-loader" style="display: none;">
