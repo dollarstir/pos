@@ -7,42 +7,44 @@ if (isset($_GET['dollar'])) {
 
     
 
-    if ($_GET['dollar']=="coursereg") {
+    if ($_GET['dollar']=="addproduct") {
 
 
-        $ctitle=$_POST['ctitle'];
-        $duration=$_POST['duration'];
-        $arequirement=$_POST['arequirement'];
-        $location=$_POST['location'];
-        $level = $_POST['level'];
-        $structure=$_POST['structure'];
-        $description= $_POST['description'];
-        $fees= $_POST['fees'];
+        $bname=$_POST['bname'];
+        $gname=$_POST['gname'];
+        $spname=$_POST['spname'];
+        $category=$_POST['category'];
+        $price = $_POST['price'];
+        $quantity=$_POST['quantity'];
+        $date_added= $_POST['date_added'];
+        $expire= $_POST['expire'];
+        $remaining= $_POST['quantity'];
+        $date_updated= $date_added;
 
-        if (empty($ctitle)) {
+        if (empty($bname)) {
 
-            echo' <div id="mess" style="background-color:red;"><p>Please Enter Course title</p></div>';
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter Brand name</p></div>';
         }
-        elseif (empty($duration)) {
-            echo' <div id="mess" style="background-color:red;"><p>Enter course duration</p></div>';
+        elseif (empty($gname)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Genetic Name</p></div>';
         }
-        elseif (empty($arequirement)) {
-            echo' <div id="mess" style="background-color:red;"><p>Enter admission requirement</p></div>';
+        elseif (empty($spname)) {
+            echo' <div id="mess" style="background-color:red;"><p>Select Suppliers Name</p></div>';
         }
-        elseif (empty($level)) {
-            echo' <div id="mess" style="background-color:red;"><p>Sorry you have to choose level</p></div>';
+        elseif (empty($category)) {
+            echo' <div id="mess" style="background-color:red;"><p>Sorry you have to choose category</p></div>';
             # code...
         }
-        elseif (empty($structure)) {
-            echo' <div id="mess" style="background-color:red;"><p>Note down the course structure</p></div>';
+        elseif (empty($price)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Price of item</p></div>';
             # code...
         }
-        elseif (empty($description)) {
-            echo' <div id="mess" style="background-color:red;"><p>Give a  brief description of your course</p></div>';
+        elseif (empty($quantity)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter quantity of Item</p></div>';
             # code...
         }
         else {
-           echo adcourses($ctitle,$duration,$arequirement,$location,$level,$structure,$description,$fees); 
+           echo adprodu($bname,$gname,$spname,$category,$price,$remaining,$quantity,$date_added,$date_updated,$expire); 
         }
 
         # code...
@@ -53,48 +55,24 @@ if (isset($_GET['dollar'])) {
 
 
 
-    if ($_GET['dollar']=="teachreg") {
+    if ($_GET['dollar']=="adcategory") {
 
 
-        $tname=$_POST['tname'];
-        $tdob=$_POST['tdob'];
-        $hometown=$_POST['hometown'];
-        $address=$_POST['address'];
-        $tcontact = $_POST['tcontact'];
-        $temail=$_POST['temail'];
-        $tgender= $_POST['tgender'];
-        $mstatus= $_POST['mstatus'];
-        $qualification= $_POST['qualification'];
-        $dateadded= $_POST['dateadded'];
+        $name=$_POST['name'];
+        $shortname=$_POST['shortname'];
+        $added_on= date("m/d/Y");
+       
 
-        if (empty($tname)) {
+        if (empty($name)) {
 
-            echo' <div id="mess" style="background-color:red;"><p>Please Enter Teacher\'s name</p></div>';
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter Category name</p></div>';
         }
-        elseif (empty($tdob)) {
-            echo' <div id="mess" style="background-color:red;"><p>Enter date of birth</p></div>';
+        elseif (empty($shortname)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Short Name </p></div>';
         }
-        elseif (empty($tcontact)) {
-            echo' <div id="mess" style="background-color:red;"><p>Enter phone number</p></div>';
-        }
-        elseif (empty($qualification)) {
-            echo' <div id="mess" style="background-color:red;"><p>Enter Qualification</p></div>';
-            # code...
-        }
-        elseif (empty($temail)) {
-            echo' <div id="mess" style="background-color:red;"><p>Enter email address</p></div>';
-            # code...
-        }
-        elseif (empty($tgender)) {
-            echo' <div id="mess" style="background-color:red;"><p>Choose gender</p></div>';
-            # code...
-        }
-        elseif (empty($mstatus)) {
-            echo' <div id="mess" style="background-color:red;"><p>Choose Marital Status</p></div>';
-            # code...
-        }
+        
         else {
-           echo adteacher($tname,$tdob,$hometown,$address,$tcontact,$temail,$tgender,$mstatus,$qualification,$dateadded); 
+           echo adcatego($name,$shortname,$added_on); 
         }
 
         # code...
@@ -102,25 +80,129 @@ if (isset($_GET['dollar'])) {
 
 
 
-    if ($_GET['dollar']=="edicos") {
+    if ($_GET['dollar']=="adpurches") {
 
 
 
-        $id = $_POST['edid'];
-        $ctitle=$_POST['ctitle'];
-        $duration=$_POST['duration'];
-        $arequirement=$_POST['arequirement'];
-        $location=$_POST['location'];
-        $level = $_POST['level'];
-        $structure=$_POST['structure'];
-        $description= $_POST['description'];
-        $fees= $_POST['fees'];
+        $bname=$_POST['bname'];
+        $gname=$_POST['gname'];
+        $spname=$_POST['spname'];
+        $category=$_POST['category'];
+        $price = $_POST['price'];
+        $quantity=$_POST['quantity'];
+        $date_added= $_POST['date_added'];
+        $expire= $_POST['expire'];
+        $remaining= $_POST['quantity'];
+        $date_updated= $date_added;
         
 
+        if (empty($bname)) {
 
-        edic($id,$ctitle,$duration,$arequirement,$location,$level,$structure,$description,$fees);
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter Brand name</p></div>';
+        }
+        elseif (empty($gname)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Genetic Name</p></div>';
+        }
+        elseif (empty($spname)) {
+            echo' <div id="mess" style="background-color:red;"><p>Select Suppliers Name</p></div>';
+        }
+        elseif (empty($category)) {
+            echo' <div id="mess" style="background-color:red;"><p>Sorry you have to choose category</p></div>';
+            # code...
+        }
+        elseif (empty($price)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Price of item</p></div>';
+            # code...
+        }
+        elseif (empty($quantity)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter quantity of Item</p></div>';
+            # code...
+        }
+        else {
+           echo adpurchas($bname,$gname,$spname,$category,$price,$remaining,$quantity,$date_added,$date_updated,$expire); 
+        }
 
 
+
+
+
+
+
+
+
+    }
+
+
+
+
+    if ($_GET['dollar']=="adsupplier") {
+
+
+
+        $name=$_POST['name'];
+        $address=$_POST['address'];
+        $telephone=$_POST['telephone'];
+        $fax=$_POST['fax'];
+        // $info=$_POST['info'];
+        $added_date = date("m/d/Y");
+        
+        
+        
+
+        if (empty($name)) {
+
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter  name</p></div>';
+        }
+        elseif (empty($address)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter address</p></div>';
+        }
+        elseif (empty($telephone)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Telephone number</p></div>';
+        }
+        
+        else {
+           echo  adsupp($name,$address,$telephone,$fax,$added_date); 
+        }
+
+
+
+
+
+
+
+
+
+    }
+
+
+    if ($_GET['dollar']=="adcustom") {
+
+
+
+        $name=$_POST['name'];
+        $address=$_POST['address'];
+        $telephone=$_POST['telephone'];
+        $fax=$_POST['fax'];
+        // $info=$_POST['info'];
+        $added_date = date("m/d/Y");
+        
+        
+        
+
+        if (empty($name)) {
+
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter  name</p></div>';
+        }
+        elseif (empty($address)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter address</p></div>';
+        }
+        elseif (empty($telephone)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Telephone number</p></div>';
+        }
+        
+        else {
+           echo  addcustomer($name,$address,$telephone,$fax,$added_date); 
+        }
 
 
 
@@ -138,6 +220,25 @@ if (isset($_GET['dollar'])) {
 
 
 
+    if ($_GET['dollar']=="updap") {
+
+
+
+        $name=$_POST['name'];
+        
+        
+        
+        
+
+        if (empty($name)) {
+
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter  Some Name</p></div>';
+        }
+        
+        
+        else {
+           echo  updateappname($name); 
+        }
 
 
 
@@ -146,12 +247,250 @@ if (isset($_GET['dollar'])) {
 
 
 
+
+    }
+
+
+
+
+    if ($_GET['dollar']=="adduser") {
+
+
+
+        $name=$_POST['name'];
+        $email=$_POST['email'];
+        $type=$_POST['type'];
+        $password=$_POST['password'];
+        // $info=$_POST['info'];
+        $added_on = date("m/d/Y");
+        
+        
+        
+
+        if (empty($name)) {
+
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter  name</p></div>';
+        }
+        elseif (empty($email)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Email Address</p></div>';
+        }
+        elseif (empty($type)) {
+            echo' <div id="mess" style="background-color:red;"><p>Please Select User type</p></div>';
+        }
+
+        elseif (empty($password)) {
+            echo' <div id="mess" style="background-color:red;"><p>Please enter password</p></div>';
+        }
+        
+        else {
+           echo  aduser($name,$email,$type,$password,$added_on); 
+        }
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+    if ($_GET['dollar']=="updpro") {
+
+        $id = $_POST['id'];
+        $bname=$_POST['bname'];
+        $gname=$_POST['gname'];
+        $spname=$_POST['spname'];
+        $category=$_POST['category'];
+        $price = $_POST['price'];
+        $quantity=$_POST['quantity'];
+        $date_added= $_POST['date_added'];
+        $expire= $_POST['expire'];
+        $remaining= $_POST['remaining'];
+        $date_updated= date("m/d/Y");
+
+        if (empty($bname)) {
+
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter Brand name</p></div>';
+        }
+        elseif (empty($gname)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Genetic Name</p></div>';
+        }
+        elseif (empty($spname)) {
+            echo' <div id="mess" style="background-color:red;"><p>Select Suppliers Name</p></div>';
+        }
+        elseif (empty($category)) {
+            echo' <div id="mess" style="background-color:red;"><p>Sorry you have to choose category</p></div>';
+            # code...
+        }
+        elseif (empty($price)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Price of item</p></div>';
+            # code...
+        }
+        elseif (empty($quantity)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter quantity of Item</p></div>';
+            # code...
+        }
+        else {
+           echo updateprod($id,$bname,$gname,$spname,$category,$price,$remaining,$quantity,$date_added,$date_updated,$expire); 
+        }
+
+        # code...
+    }
+
+
+
+    if ($_GET['dollar']=="updpurcha") {
+
+        $id = $_POST['id'];
+        $bname=$_POST['bname'];
+        $gname=$_POST['gname'];
+        $spname=$_POST['spname'];
+        $category=$_POST['category'];
+        $price = $_POST['price'];
+        $quantity=$_POST['quantity'];
+        $date_added= $_POST['date_added'];
+        $expire= $_POST['expire'];
+        $remaining= $_POST['quantity'];
+        $date_updated= date("m/d/Y");
+
+        if (empty($bname)) {
+
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter Brand name</p></div>';
+        }
+        elseif (empty($gname)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Genetic Name</p></div>';
+        }
+        elseif (empty($spname)) {
+            echo' <div id="mess" style="background-color:red;"><p>Select Suppliers Name</p></div>';
+        }
+        elseif (empty($category)) {
+            echo' <div id="mess" style="background-color:red;"><p>Sorry you have to choose category</p></div>';
+            # code...
+        }
+        elseif (empty($price)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Price of item</p></div>';
+            # code...
+        }
+        elseif (empty($quantity)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter quantity of Item</p></div>';
+            # code...
+        }
+        else {
+           echo updatepurchases($id,$bname,$gname,$spname,$category,$price,$remaining,$quantity,$date_added,$date_updated,$expire); 
+        }
+
+        # code...
+    }
+
+
+
+    if ($_GET['dollar']=="updatcateg") {
+
+        $id =$_POST['id'];
+        $name=$_POST['name'];
+        $shortname=$_POST['shortname'];
+        
+       
+
+        if (empty($name)) {
+
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter Category name</p></div>';
+        }
+        elseif (empty($shortname)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Short Name </p></div>';
+        }
+        
+        else {
+           echo apdatecategories($id,$name,$shortname); 
+        }
+
+        # code...
+    }
+
+
+    if ($_GET['dollar']=="updatesup") {
+
+
+        $id=$_POST['id'];
+        $name=$_POST['name'];
+        $address=$_POST['address'];
+        $telephone=$_POST['telephone'];
+        $fax=$_POST['fax'];
+        // $info=$_POST['info'];
+        
+        
+        
+        
+
+        if (empty($name)) {
+
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter  name</p></div>';
+        }
+        elseif (empty($address)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter address</p></div>';
+        }
+        elseif (empty($telephone)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Telephone number</p></div>';
+        }
+        
+        else {
+           echo  updtaesuppliers($id,$name,$address,$telephone,$fax); 
+        }
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+    if ($_GET['dollar']=="updatecurren") {
+
+
+        $id= 1;
+        $name=$_POST['currency_name'];
+        $symbol=$_POST['symbol'];
+       
+       
+        
+        
+        
+        
+
+        if (empty($name)) {
+
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter Currency name</p></div>';
+        }
+        elseif (empty($symbol)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Symbol</p></div>';
+        }
+       
+        
+        else {
+           echo  updtatecurrency($id,$name,$symbol); 
+        }
+
+
+
+
+
+
+
+
+
+    }
 
 
     # code...
 }
-
-
-
-
 ?>

@@ -116,7 +116,7 @@ $(document).ready(function() {
             var id = $(this).children("div").children("input[name='id']").val();
             var quantity = $(this).children("div").children("input[name='quantity']").val();
             var gt = $(this).children("div").children("input[name='gt']").val();
-            var cname = $(this).children("div").children("input[name='cname']").val();
+            var cname = $(this).children("div").children("select[name='cname']").val();
             var pa = $(this).children("div").children("input[name='pa']").val();
 
             targets2 = {

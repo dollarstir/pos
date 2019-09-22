@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 19, 2019 at 06:36 PM
+-- Generation Time: Sep 22, 2019 at 02:12 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.1.32
 
@@ -25,19 +25,89 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `added_on` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `name`, `email`, `password`, `added_on`) VALUES
+(1, 'Dollarstir', 'dollar@gmail.com', 'king1234', '09/21/2019'),
+(2, 'King Ping', 'king@gmail.com', 'king1234', '09/21/2019');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `shortname` varchar(200) NOT NULL,
+  `added_on` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`, `shortname`, `added_on`) VALUES
+(1, 'Inflamation', 'Infla', '09/20/2019'),
+(2, 'Cancer', 'Cn', '09/20/2019'),
+(3, 'Pain Killer', 'PK', '09/21/2019'),
+(4, 'Stomach Ulcer', 'Sulc', '09/22/2019');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `currency`
+--
+
+CREATE TABLE `currency` (
+  `id` int(11) NOT NULL,
+  `currency_name` varchar(200) NOT NULL,
+  `symbol` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `currency`
+--
+
+INSERT INTO `currency` (`id`, `currency_name`, `symbol`) VALUES
+(1, 'Ghana cedis', 'Â¢');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customers`
 --
 
 CREATE TABLE `customers` (
   `id` int(50) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `address` varchar(500) NOT NULL,
-  `telephone` varchar(50) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `telephone` varchar(200) NOT NULL,
   `fax` varchar(200) NOT NULL,
-  `info` text NOT NULL,
-  `added_date` date NOT NULL,
-  `delete_status` tinyint(4) NOT NULL
+  `added_date` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`, `address`, `telephone`, `fax`, `added_date`) VALUES
+(2, 'King Dollar', 'Dansoman', '0556676471', '0556734434', '09/21/2019'),
+(3, 'Bismark Ansah', 'Dansoman', '0556676471', '0556734434', '09/21/2019');
 
 -- --------------------------------------------------------
 
@@ -52,12 +122,20 @@ CREATE TABLE `drugs` (
   `spname` varchar(200) NOT NULL,
   `category` varchar(200) NOT NULL,
   `price` varchar(200) NOT NULL,
-  `remaining` varchar(200) NOT NULL,
-  `quantity` varchar(200) NOT NULL,
+  `remaining` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `date_added` varchar(200) NOT NULL,
   `date_updated` varchar(200) NOT NULL,
   `expire` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `drugs`
+--
+
+INSERT INTO `drugs` (`id`, `bname`, `gname`, `spname`, `category`, `price`, `remaining`, `quantity`, `date_added`, `date_updated`, `expire`) VALUES
+(3, 'Lamal', 'Lamadol', '4', '1', '1.5', 99, 100, '09/22/2019', '09/22/2019', '2020-09-04'),
+(4, 'Paracetamol', 'Paracet', '4', '3', '1.5', 100, 100, '09/22/2019', '09/22/2019', '2020-01-15');
 
 -- --------------------------------------------------------
 
@@ -210,14 +288,22 @@ CREATE TABLE `purchased` (
   `id` int(11) NOT NULL,
   `bname` varchar(200) NOT NULL,
   `gname` varchar(200) NOT NULL,
-  `category` varchar(200) NOT NULL,
   `spname` varchar(200) NOT NULL,
-  `pnumber` varchar(200) NOT NULL,
+  `category` varchar(200) NOT NULL,
   `price` varchar(200) NOT NULL,
-  `quantity` varchar(200) NOT NULL,
+  `remaining` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `date_added` varchar(200) NOT NULL,
+  `date_updated` varchar(200) NOT NULL,
   `expire` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `purchased`
+--
+
+INSERT INTO `purchased` (`id`, `bname`, `gname`, `spname`, `category`, `price`, `remaining`, `quantity`, `date_added`, `date_updated`, `expire`) VALUES
+(3, 'Paracetamol', 'Paracet', 'Dollarstir', 'Pain Killer', '1', 200, 200, '09/21/2019', '09/22/2019', '2020-01-25');
 
 -- --------------------------------------------------------
 
@@ -228,11 +314,22 @@ CREATE TABLE `purchased` (
 CREATE TABLE `sales` (
   `id` int(11) NOT NULL,
   `product_name` varchar(200) NOT NULL,
-  `Invoice` varchar(200) NOT NULL,
+  `Invoice` varchar(200) DEFAULT NULL,
   `quantity` varchar(200) NOT NULL,
-  `about` varchar(200) NOT NULL,
+  `about` varchar(200) DEFAULT NULL,
   `date_added` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`id`, `product_name`, `Invoice`, `quantity`, `about`, `date_added`) VALUES
+(1, '3', '1', '1', NULL, '2019-09-22'),
+(2, '3', '2', '99', NULL, '2019-09-22'),
+(3, '3', '3', '97', NULL, '2019-09-22'),
+(4, '3', '4', '3', NULL, '2019-09-22'),
+(5, '3', '5', '1', NULL, '2019-09-22');
 
 -- --------------------------------------------------------
 
@@ -242,13 +339,25 @@ CREATE TABLE `sales` (
 
 CREATE TABLE `sales_report` (
   `id` int(200) NOT NULL,
-  `invoice` varchar(200) NOT NULL,
+  `product` varchar(100) NOT NULL,
+  `invoice` varchar(200) DEFAULT NULL,
   `Cname` varchar(200) NOT NULL,
   `gt` varchar(200) NOT NULL,
   `pa` varchar(200) NOT NULL,
   `balance` varchar(200) NOT NULL,
-  `date_added` int(11) NOT NULL
+  `date_added` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sales_report`
+--
+
+INSERT INTO `sales_report` (`id`, `product`, `invoice`, `Cname`, `gt`, `pa`, `balance`, `date_added`) VALUES
+(1, '3', NULL, 'Kofi menu', '1.5', '2', '-0.5', '2019-09-22'),
+(2, '3', NULL, 'ddd', '148.5', '1', '147.5', '2019-09-22'),
+(3, '3', NULL, 'John', '145.5', '145', '0.5', '2019-09-22'),
+(4, '3', NULL, 'dfgdgdffgdf', '4.5', '5', '-0.5', '2019-09-22'),
+(5, '3', NULL, '2', '1.5', '4', '-2.5', '2019-09-22');
 
 -- --------------------------------------------------------
 
@@ -282,20 +391,21 @@ INSERT INTO `settings` (`id`, `fevicon`, `logo`, `title`, `login_image`, `footer
 CREATE TABLE `suppliers` (
   `id` int(50) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `address` varchar(500) NOT NULL,
-  `telephone` varchar(50) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `telephone` varchar(200) NOT NULL,
   `fax` varchar(200) NOT NULL,
-  `info` text NOT NULL,
-  `added_date` date NOT NULL,
-  `delete_status` tinyint(4) NOT NULL
+  `added_date` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `suppliers`
 --
 
-INSERT INTO `suppliers` (`id`, `name`, `address`, `telephone`, `fax`, `info`, `added_date`, `delete_status`) VALUES
-(1, 'gfdfg 11', 'dfgdf111', '+919767424611', '422208111', 'dfgdfgdfg11111', '2019-04-02', 0);
+INSERT INTO `suppliers` (`id`, `name`, `address`, `telephone`, `fax`, `added_date`) VALUES
+(3, 'Bismark Ansah', 'Dansoman', '0556676471', '0556734434', '09/21/2019'),
+(4, 'Dollarstir', 'Dansoman', '055454545', '445455455', '09/22/2019'),
+(5, 'Kofi Nimo ', 'Obuasi', '556676472', '556676476', '09/21/2019'),
+(6, 'Desmond Kofi Danso', 'Kaneshi', '0233445566', '0233445566', '09/22/2019');
 
 -- --------------------------------------------------------
 
@@ -305,6 +415,7 @@ INSERT INTO `suppliers` (`id`, `name`, `address`, `telephone`, `fax`, `info`, `a
 
 CREATE TABLE `tbl_admin` (
   `id` int(100) NOT NULL,
+  `name` varchar(200) NOT NULL,
   `email` varchar(255) NOT NULL,
   `login` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL DEFAULT 'admin',
@@ -317,9 +428,9 @@ CREATE TABLE `tbl_admin` (
 -- Dumping data for table `tbl_admin`
 --
 
-INSERT INTO `tbl_admin` (`id`, `email`, `login`, `role`, `avator`, `group_id`, `delete_status`) VALUES
-(1, 'admin@admin.com', '$2y$10$eqnU/hsNjq3M7h3TvFfwYOKIP/6jHmzBLEFiHyhMaKjf4X3HenLWa', 'admin', '70520.png', 1, 0),
-(3, 'user@gmail.com', '$2y$10$eqnU/hsNjq3M7h3TvFfwYOKIP/6jHmzBLEFiHyhMaKjf4X3HenLWa', 'users', NULL, 3, 0);
+INSERT INTO `tbl_admin` (`id`, `name`, `email`, `login`, `role`, `avator`, `group_id`, `delete_status`) VALUES
+(1, 'Administrator', 'admin@admin.com', 'admin', 'admin', '70520.png', 1, 0),
+(3, '', 'user@gmail.com', '$2y$10$eqnU/hsNjq3M7h3TvFfwYOKIP/6jHmzBLEFiHyhMaKjf4X3HenLWa', 'admin', NULL, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -345,9 +456,66 @@ INSERT INTO `tbl_alerts` (`id`, `code`, `description`, `type`) VALUES
 (4, '004', 'Record Successfully Updated', 'success'),
 (5, '005', 'Record Sudccessfully Deleted', 'success');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `title`
+--
+
+CREATE TABLE `title` (
+  `id` int(11) NOT NULL,
+  `app_name` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `title`
+--
+
+INSERT INTO `title` (`id`, `app_name`) VALUES
+(1, 'Josh POS');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `added_on` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `email`, `password`, `added_on`) VALUES
+(1, 'Dollarstir', 'dollar@gmail.com', 'king1234', '09/21/2019');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `currency`
+--
+ALTER TABLE `currency`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `customers`
@@ -436,20 +604,50 @@ ALTER TABLE `tbl_alerts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `title`
+--
+ALTER TABLE `title`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `currency`
+--
+ALTER TABLE `currency`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `drugs`
 --
 ALTER TABLE `drugs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `groups`
@@ -485,19 +683,19 @@ ALTER TABLE `permission_role`
 -- AUTO_INCREMENT for table `purchased`
 --
 ALTER TABLE `purchased`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sales_report`
 --
 ALTER TABLE `sales_report`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -509,7 +707,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_admin`
@@ -522,6 +720,18 @@ ALTER TABLE `tbl_admin`
 --
 ALTER TABLE `tbl_alerts`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT for table `title`
+--
+ALTER TABLE `title`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
