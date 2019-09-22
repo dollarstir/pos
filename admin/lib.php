@@ -45,31 +45,29 @@ function product_sales() {
     $query = mysqli_query($conn, $sql);
 
     while ($results = mysqli_fetch_array($query)) {
-        if($results['remaining'] > 0) {
-            if($results['remaining'] <= 3) {
-                echo '
-                    <tr style="color: red">
-                        <td>'.$results['id'].'</td>
-                        <td>'.$results['bname'].'</td>
-                        <td>'.$results['remaining'].'</td>
-                        <td>'.$results['price'].'</td>
-                        <td><div id="'.$results['id'].'" class="btn add_to_cartProduct">Add</div></td>
-                    </tr>
-                ';
-    
-            } else {
-                echo '
-                    <tr>
-                        <td>'.$results['id'].'</td>
-                        <td>'.$results['bname'].'</td>
-                        <td>'.$results['remaining'].'</td>
-                        <td>'.$results['price'].'</td>
-                        <td><div id="'.$results['id'].'" class="btn add_to_cartProduct">Add</div></td>
-                    </tr>
-                ';
-    
-            }
+        if($results['remaining'] == 0) {
+            echo '
+                <tr style="color: red">
+                    <td>'.$results['id'].'</td>
+                    <td>'.$results['bname'].'</td>
+                    <td>'.$results['remaining'].'</td>
+                    <td>'.$results['price'].'</td>
+                    <td><div id="'.$results['id'].'" class="btn">Out Of Stock</div></td>
+                </tr>
+            ';
+
+        } else {
+            echo '
+                <tr>
+                    <td>'.$results['id'].'</td>
+                    <td>'.$results['bname'].'</td>
+                    <td>'.$results['remaining'].'</td>
+                    <td>'.$results['price'].'</td>
+                    <td><div id="'.$results['id'].'" class="btn add_to_cartProduct">Add</div></td>
+                </tr>
+            ';
         }
+        
     }
 }
 

@@ -154,6 +154,12 @@ $(document).ready(function() {
                     $(".customCont").fadeOut(500);
 
 
+                } else if(response.includes('out')) {
+                    Swal.fire({
+                        type: 'warning',
+                        text: 'Can\'t add to report because a product is out of stock\nPlease remove it!!',
+                    })
+
                 } else if(response.includes('error')) {
                     Swal.fire({
                         type: 'error',
@@ -164,12 +170,6 @@ $(document).ready(function() {
                     Swal.fire({
                         type: 'warning',
                         text: 'Please fill all neccessary input fields',
-                    })
-
-                } else if(response.includes('out')) {
-                    Swal.fire({
-                        type: 'warning',
-                        text: 'Can\'t add to report because a product is out of stock\nPlease remove it!!',
                     })
 
                 } else {
