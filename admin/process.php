@@ -225,6 +225,10 @@ if (isset($_GET['dollar'])) {
 
 
         $name=$_POST['name'];
+        $location=$_POST['location'];
+        $address=$_POST['address'];
+        $telephone=$_POST['telephone'];
+
         
         
         
@@ -234,10 +238,23 @@ if (isset($_GET['dollar'])) {
 
             echo' <div id="mess" style="background-color:red;"><p>Please Enter  Some Name</p></div>';
         }
+        elseif (empty($location)) {
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter   Location</p></div>';
+
+        }
+        elseif (empty($address)) {
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter   Address</p></div>';
+
+        }
+        elseif (empty($telephone)) {
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter   Telephone number</p></div>';
+
+        }
+        
         
         
         else {
-           echo  updateappname($name); 
+           echo  updateappname($name,$location,$address,$telephone); 
         }
 
 

@@ -1,4 +1,3 @@
-
 <?php 
 session_start();
 include "db.php";
@@ -16,16 +15,20 @@ if (!isset($_SESSION['id']))
 
 
 
-
-
-
-
 ?>
+
+
+
+
+
+
+
+
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>App Title</title>
+    <title>Add Category</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="assets/css/loader.css" rel="stylesheet" type="text/css">
@@ -35,6 +38,13 @@ if (!isset($_SESSION['id']))
     <link href="assets/css/plugins.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/css/mess.css">
     <!-- END GLOBAL MANDATORY STYLES -->
+
+
+
+    <!-- BEGIN PAGE LEVEL CUSTOM STYLES -->
+    <link rel="stylesheet" type="text/css" href="plugins/table/datatable/datatables.css">
+    <link rel="stylesheet" type="text/css" href="plugins/table/datatable/custom_dt_html5.css">
+    <!-- END PAGE LEVEL CUSTOM STYLES -->
 
     <!--  BEGIN CUSTOM STYLE FILE  -->
     <style>
@@ -1704,101 +1714,48 @@ if (!isset($_SESSION['id']))
 
 
 
-                    <div class="col-lg-6 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing"   style="margin: auto;">
+                    
+
+
+
+                    <div class="col-lg-12 layout-spacing" style="margin-top:-40px;">
                         <div class="statbox widget box box-shadow">
-                            <div class="widget-header">                                
+                            <div class="widget-header">
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                       <center> <u><h4>App Title</h4></u></center>
-                                    </div>                                                      
+                                        <center><h4>Get Purchased Report</h4><center>
+                                    </div>                                                                        
                                 </div>
                             </div>
                             <div class="widget-content widget-content-area">
-                                <?php 
-
-                                    include 'db.php';
-                                    $apt=mysqli_query($conn,"SELECT * FROM title");
-                                    $get=mysqli_fetch_array($apt);
-                                    $appname=$get['app_name'];
-                                    $location = $get['location'];
-                                    $address = $get['address'];
-                                    $telephone = $get['telephone'];
-
-
-                                ?>
-                                <form class="updapp">
-                                   
-                                    <div class="form-group mb-4">
-                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" value="<?php echo $appname;?>" readonly>
+                                <form class="form-inline justify-content-center mb-4" method="POST" action="preport.php">
+                                    <label class="" for="inlineFormInputName2">From</label>
+                                    <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="" name="fro">
+                                    <label class="" for="inlineFormInputGroupUsername2">To</label>
+                                    <div class="input-group mb-2 mr-sm-2">
+                                        <!-- <div class="input-group-prepend">
+                                            <div class="input-group-text">@</div>
+                                        </div> -->
+                                        <input type="date" class="form-control daterange2" id="inlineFormInputGroupUsername2" placeholder="" name="to">
                                     </div>
-                                    <div class="form-group mb-4">
-                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" value="<?php echo $location;?>" readonly>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" value="<?php echo $address;?>" readonly>
-                                        
-                                    </div>
-
-                                    <div class="form-group mb-4">
-                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" value="<?php echo $telephone;?>" readonly>
-                                        
-                                    </div>
-
-
-                                    <div class="form-group mb-4">
-                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="name" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Enter new name for your store">
-                                    </div>
-
-
-                                    <div class="form-group mb-4">
-                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="location" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Enter Company's location">
-                                    </div>
-
-                                    <div class="form-group mb-4">
-                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="address" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Enter Company's Address">
-                                    </div>
-
-                                    <div class="form-group mb-4">
-                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="telephone" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Enter company's telephone">
-                                    </div>
-
                                     
-
-
-                                 
-
-                                   
-
                                     
-
-
-
-                                    
-
-                                    
-                                   
-                                    <input type="submit" name="subc" class="mt-4 mb-4 btn btn-button-7 btn-rounded sub" value="Update Shop Name" style="margin-left:150px;background-color:green !important;">
-
+                                    <button type="submit" class="btn btn-button-7 mb-2" name="btngrep">Submit</button>
+                                
                                     <div id="respo">
                                     <!-- <div id="mess"><p>Voucher generated and saved successfully</p></div> -->
                                     
                                     </div>
                                 </form>
+
+
+                               
                             </div>
                         </div>
-                    </div>
+                </div>
 
 
-
-                    
+                
 
                     
 
@@ -1953,7 +1910,205 @@ if (!isset($_SESSION['id']))
                             </div>
                         </div>
                     </div> -->
+                    
                 </div>
+
+
+                <?php 
+
+                    if (isset($_POST['btngrep'])) {
+
+                    include 'db.php';
+
+                    $fro = "09/19/2019";
+                    $to = "09/20/2019";
+
+                    echo'<div class="row" id="cancel-row" style="margin-top:-30px;">
+                
+                    <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-header">
+                                <div class="row">
+                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                        <center><h4> Purchased Report</h4></center>
+                                    </div>                 
+                                </div>
+                            </div>
+                            <div class="widget-content widget-content-area">
+                                <div class="table-responsive mb-4">
+                                    <table id="html5-extension" class="table table-striped table-bordered table-hover" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Brand Name</th>
+                                                <th>Genetic Name</th>
+                                                <th>Supplier Namne</th>
+                                                <th>Category</th>
+                                                <th>Price</th>
+                                                
+                                                <th>Quantity</th>
+                                                <th>Date Added</th>
+                                                <th>Last Updated</th>
+                                                <th>Expiration</th>
+                                                <!-- <th class="invisible"></th> -->
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        
+                                       
+                                        '.include 'db.php';
+                        $vp =mysqli_query($conn,"SELECT * FROM purchased WHERE date_added >= '$fro' AND date_added <= '$to' ");
+
+                                    
+                                        while ($vip= mysqli_fetch_array($vp)) {
+                                    
+                                            $id= $vip['id'];
+                                            $bname= $vip['bname'];
+                                            $gname = $vip['gname'];
+                                            $spname = $vip['spname'];
+                                            $category =$vip['category'];
+                                            $price = $vip['price'];
+                                            $remaining = $vip['remaining'];
+                                            $quantity = $vip['quantity'];
+                                            $date_added = $vip['date_added'];
+                                            $date_updated = $vip['date_updated'];
+                                            $expire = $vip['expire'];
+                                    
+                                            echo '<tr>
+                                            <td>'.$bname.'</td>
+                                            <td>'.$gname.'</td>
+                                            <td>'.$spname.'</td>
+                                            <td>'.$category.'</td>
+                                            <td>'.$price.'</td>
+                                            
+                                            <td>'.$quantity.'</td>
+                                            <td>'.$date_added.'</td>
+                                            <td>'.$date_updated.'</td>
+                                            <td>'.$expire.'</td>
+                                            <td><a href="editpurchased.php?pid='.$id.'"><span class="flaticon-edit-7"></span> </a>| <a href="deletepurchased.php?pid='.$id.'" <span class="flaticon-delete"></span></td>
+                                    
+                                           
+                                            
+                                        </tr>';
+                                    
+                                    
+                                    
+                                    
+                                            
+                                        }
+
+                                        
+                                        
+                                            
+                                       echo' </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>';
+
+
+
+
+        
+    }
+                        # code...
+
+                    else {
+                        echo'<div class="row" id="cancel-row" style="margin-top:-30px;">
+                
+                        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+                            <div class="statbox widget box box-shadow">
+                                <div class="widget-header">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                            <center><h4> Purchased Report</h4></center>
+                                        </div>                 
+                                    </div>
+                                </div>
+                                <div class="widget-content widget-content-area">
+                                    <div class="table-responsive mb-4">
+                                        <table id="html5-extension" class="table table-striped table-bordered table-hover" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Brand Name</th>
+                                                    <th>Genetic Name</th>
+                                                    <th>Supplier Namne</th>
+                                                    <th>Category</th>
+                                                    <th>Price</th>
+                                                    
+                                                    <th>Quantity</th>
+                                                    <th>Date Added</th>
+                                                    <th>Last Updated</th>
+                                                    <th>Expiration</th>
+                                                    <!-- <th class="invisible"></th> -->
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                            
+                                           
+                                            '.include 'db.php';
+                                            $vp =mysqli_query($conn,"SELECT * FROM purchased");
+                                        
+                                            while ($vip= mysqli_fetch_array($vp)) {
+                                        
+                                                $id= $vip['id'];
+                                                $bname= $vip['bname'];
+                                                $gname = $vip['gname'];
+                                                $spname = $vip['spname'];
+                                                $category =$vip['category'];
+                                                $price = $vip['price'];
+                                                $remaining = $vip['remaining'];
+                                                $quantity = $vip['quantity'];
+                                                $date_added = $vip['date_added'];
+                                                $date_updated = $vip['date_updated'];
+                                                $expire = $vip['expire'];
+                                        
+                                                echo '<tr>
+                                                <td>'.$bname.'</td>
+                                                <td>'.$gname.'</td>
+                                                <td>'.$spname.'</td>
+                                                <td>'.$category.'</td>
+                                                <td>'.$price.'</td>
+                                                
+                                                <td>'.$quantity.'</td>
+                                                <td>'.$date_added.'</td>
+                                                <td>'.$date_updated.'</td>
+                                                <td>'.$expire.'</td>
+                                                <td><a href="editpurchased.php?pid='.$id.'"><span class="flaticon-edit-7"></span> </a>| <a href="deletepurchased.php?pid='.$id.'" <span class="flaticon-delete"></span></td>
+                                        
+                                               
+                                                
+                                            </tr>';
+                                        
+                                        
+                                        
+                                        
+                                                
+                                            }
+    
+                                            
+                                            
+                                                
+                                           echo' </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>';
+                    }
+
+
+                ?>
+
+                
 
                 <!-- <div class="row layout-spacing">
                     
@@ -2906,7 +3061,35 @@ if (!isset($_SESSION['id']))
         });
     </script>
     <script src="assets/js/custom.js"></script>
-    <!-- END GLOBAL MANDATORY STYLES -->   
+    <!-- END GLOBAL MANDATORY STYLES -->  
+    
+    <!-- BEGIN PAGE LEVEL CUSTOM SCRIPTS -->
+    <script src="plugins/table/datatable/datatables.js"></script>
+    <!-- NOTE TO Use Copy CSV Excel PDF Print Options You Must Include These Files  -->
+    <script src="plugins/table/datatable/button-ext/dataTables.buttons.min.js"></script>
+    <script src="plugins/table/datatable/button-ext/jszip.min.js"></script>    
+    <script src="plugins/table/datatable/button-ext/buttons.html5.min.js"></script>
+    <script src="plugins/table/datatable/button-ext/buttons.print.min.js"></script>
+    <script>
+        $('#html5-extension').DataTable( {
+            dom: '<"row"<"col-md-12"<"row"<"col-md-6"B><"col-md-6"f> > ><"col-md-12"rt> <"col-md-12"<"row"<"col-md-5 mb-md-0 mb-5"i><"col-md-7"p>>> >',
+            buttons: {
+                buttons: [
+                    { extend: 'copy', className: 'btn btn-default btn-rounded btn-sm mb-4' },
+                    { extend: 'csv', className: 'btn btn-default btn-rounded btn-sm mb-4' },
+                    { extend: 'excel', className: 'btn btn-default btn-rounded btn-sm mb-4' },
+                    { extend: 'print', className: 'btn btn-default btn-rounded btn-sm mb-4' }
+                ]
+            },
+            "language": {
+                "paginate": {
+                  "previous": "<i class='flaticon-arrow-left-1'></i>",
+                  "next": "<i class='flaticon-arrow-right'></i>"
+                },
+                "info": "Showing page _PAGE_ of _PAGES_"
+            }
+        } );
+    </script>
 
 </body>
 </html>
