@@ -2,10 +2,10 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
+-- Host: localhost
 -- Generation Time: Sep 23, 2019 at 10:51 AM
 -- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- PHP Version: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -134,8 +134,8 @@ CREATE TABLE `drugs` (
 --
 
 INSERT INTO `drugs` (`id`, `bname`, `gname`, `spname`, `category`, `price`, `remaining`, `quantity`, `date_added`, `date_updated`, `expire`) VALUES
-(3, 'Lamal', 'Lamadol', '4', '1', '1.5', 67, 100, '09/22/2019', '09/22/2019', '2020-09-04'),
-(4, 'Paracetamol', 'Paracet', '4', '3', '1.5', 1, 100, '09/22/2019', '09/22/2019', '2020-01-15');
+(3, 'Lamal', 'Lamadol', '4', '1', '1.5', 99, 100, '09/22/2019', '09/22/2019', '2020-09-04'),
+(4, 'Paracetamol', 'Paracet', '4', '3', '1.5', 100, 100, '09/22/2019', '09/22/2019', '2020-01-15');
 
 -- --------------------------------------------------------
 
@@ -303,7 +303,8 @@ CREATE TABLE `purchased` (
 --
 
 INSERT INTO `purchased` (`id`, `bname`, `gname`, `spname`, `category`, `price`, `remaining`, `quantity`, `date_added`, `date_updated`, `expire`) VALUES
-(3, 'Paracetamol', 'Paracet', 'Dollarstir', 'Pain Killer', '1', 200, 200, '09/21/2019', '09/22/2019', '2020-01-25');
+(3, 'Paracetamol', 'Paracet', 'Dollarstir', 'Pain Killer', '1', 200, 200, '2019-09-21', '2019-09-22', '2020-01-25'),
+(4, 'Lamal', 'Lamadol', '5', '1', '2', 100, 100, '2019-09-22', '2019-09-22', '2020-09-02');
 
 -- --------------------------------------------------------
 
@@ -320,14 +321,6 @@ CREATE TABLE `sales` (
   `date_added` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `sales`
---
-
-INSERT INTO `sales` (`id`, `salesreportID`, `product_name`, `totalprice`, `quantity`, `date_added`) VALUES
-(1, '1', '3', '3', '2', '2019-09-23'),
-(2, '1', '4', '15', '10', '2019-09-23');
-
 -- --------------------------------------------------------
 
 --
@@ -343,13 +336,6 @@ CREATE TABLE `sales_report` (
   `balance` varchar(200) NOT NULL,
   `date_added` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `sales_report`
---
-
-INSERT INTO `sales_report` (`id`, `invoice`, `Cname`, `gt`, `pa`, `balance`, `date_added`) VALUES
-(1, '#HID5d8882d0cc04a', '2', '18', '10', '8', '2019-09-23');
 
 -- --------------------------------------------------------
 
@@ -456,15 +442,18 @@ INSERT INTO `tbl_alerts` (`id`, `code`, `description`, `type`) VALUES
 
 CREATE TABLE `title` (
   `id` int(11) NOT NULL,
-  `app_name` text NOT NULL
+  `app_name` text NOT NULL,
+  `location` varchar(200) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `telephone` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `title`
 --
 
-INSERT INTO `title` (`id`, `app_name`) VALUES
-(1, 'Josh POS');
+INSERT INTO `title` (`id`, `app_name`, `location`, `address`, `telephone`) VALUES
+(1, 'Doll Pharmacy', 'Cape Coast Ghana', 'P.O.Box 2019', '055454455454');
 
 -- --------------------------------------------------------
 
@@ -675,19 +664,19 @@ ALTER TABLE `permission_role`
 -- AUTO_INCREMENT for table `purchased`
 --
 ALTER TABLE `purchased`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sales_report`
 --
 ALTER TABLE `sales_report`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `settings`

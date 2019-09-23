@@ -9,6 +9,9 @@ if(isset($_GET)) {
     $query2 = mysqli_query($conn, "SELECT * FROM customers WHERE id = {$sales_report['Cname']}");
     $customer = mysqli_fetch_array($query2);
 
+    $query_t = mysqli_query($conn, "SELECT * FROM title");
+    $title = mysqli_fetch_array($query_t);
+
 
 } else {
 
@@ -63,16 +66,14 @@ if(isset($_GET)) {
                     <h5 class="invoice-from-title mb-3">Bill From</h5>
                     <div class="row">
                         <div class="col-12 mb-4">
-                            <p>Pharmacy</p>  
+                            <p><?php echo $title['app_name']?></p>  
                         </div>
                         <div class="col-12 mb-4">
-                            <p>405 Mulberry Rd. Mc Grady,</p>
-                            <p>NC, 28649</p>
-                            
+                            <p><?php echo $title['location']?></p>                      
+                            <p><?php echo $title['address']?></p>                      
                         </div>
                         <div class="col-12 mb-4">
-                            <p>Fax: +0(863) 228-7064</p>
-                            <p>Phone: +(740) 927-9284</p>
+                            <p>Telephone: <?php echo $title['telephone']?></p>
                         </div>
                     </div>
                 </div>
@@ -83,11 +84,12 @@ if(isset($_GET)) {
                             <p><?php echo $customer['name'];?></p>
                         </div>
                         <div class="col-12 mb-4">
-                            <p><?php $customer['address'];?></p>
+                            <p><?php echo $customer['address'];?></p>
+                            <p></p>
                         </div>
                         <div class="col-12 mb-4">
-                            <p><?php echo $customer['fax'];?></p>
-                            <p><?php echo $customer['telephone'];?></p>
+                            <p>Fax: <?php echo $customer['fax'];?></p>
+                            <p>Phone: <?php echo $customer['telephone'];?></p>
                         </div>
                     </div>
                 </div>

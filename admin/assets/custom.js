@@ -1,4 +1,12 @@
 $(document).ready(function() {
+
+    $(document).on("click", ".outofstock", function() {
+        Swal({
+            type: 'warning',
+            text: "A product is out of stock"
+        })
+    })
+
     $(document).on("click", '.closePop', function () {
         $(".customCont").fadeOut(500);
     })
