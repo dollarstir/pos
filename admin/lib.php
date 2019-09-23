@@ -22,6 +22,7 @@ function sales_report() {
         echo '
             <tr>
                 <td>'.$results['id'].'</td>
+                <td>'.$results_sr['Cname'].'</td>
                 <td>'.$results['product'].'</td>
                 <td>'.$results['quantity'].'</td>
                 <td>GH&#8373; '.$results['unit_price'].'</td>
@@ -102,7 +103,6 @@ if(isset($_GET) || isset($_POST)) {
                     <div class="row invoice-top-section">
                         <div class="col-sm-6 mb-4">
                             <h5 class="invoice-info-title">Invoice Info</h5>
-                            <p class="invoice-serial-number">#1942784</p>
                         </div>
                         <div class="col-sm-6 mb-4 text-sm-right">
                             <p class="invoice-order-status"> 
@@ -122,7 +122,6 @@ if(isset($_GET) || isset($_POST)) {
                                 echo '
                                 </select>  
                             </p>
-                            <p class="invoice-order-date">Date: ###-##-##</p>
                         </div>
                     </div>
 
@@ -169,8 +168,6 @@ if(isset($_GET) || isset($_POST)) {
                                                     </tr>
                                                 ';
                                             }
-
-
 
                                             $gt = $gt + $cost;
                                         }
@@ -250,7 +247,9 @@ if(isset($_GET) || isset($_POST)) {
                 $balance = $gt - $pa;
                 $date = date('Y-m-d');
 
-                $sql = "INSERT INTO sales_report (invoice, Cname, gt, pa, balance, date_added) VALUES ('', '$id', '$gt', '$pa', '$balance',  '$date')";
+                $invoice = uniqid('#HID', false);
+
+                $sql = "INSERT INTO sales_report (invoice, Cname, gt, pa, balance, date_added) VALUES ('$invoice', '$id', '$gt', '$pa', '$balance',  '$date')";
 
                 if(mysqli_query($conn, $sql)) {
                     $last_id = mysqli_insert_id($conn);

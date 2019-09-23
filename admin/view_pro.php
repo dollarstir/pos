@@ -158,6 +158,7 @@ include "lib.php";
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>Customer Name</th>
                                                 <th>Product</th>
                                                 <th>Quantity</th>
                                                 <th>Unit Price</th>

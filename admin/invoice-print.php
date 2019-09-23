@@ -50,10 +50,10 @@ if(isset($_GET)) {
             <div class="row invoice-top-section">
                 <div class="col-sm-6 mb-4">
                     <h5 class="invoice-info-title">Invoice Info</h5>
-                    <p class="invoice-serial-number">#1942784</p>
+                    <p class="invoice-serial-number"><?php echo $sales_report['invoice'];?></p>
                 </div>
                 <div class="col-sm-6 mb-4 text-sm-right">
-                    <p class="invoice-order-status">Order Status: Pending</p>
+                    <p class="invoice-order-status"></p>
                     <p class="invoice-order-date">Date: <?php echo date('Y-m-d');?></p>
                 </div>
             </div>
@@ -83,8 +83,7 @@ if(isset($_GET)) {
                             <p><?php echo $customer['name'];?></p>
                         </div>
                         <div class="col-12 mb-4">
-                            <p>86781 547th Ave. Osmond,</p>
-                            <p>NE, 68765</p>
+                            <p><?php $customer['address'];?></p>
                         </div>
                         <div class="col-12 mb-4">
                             <p><?php echo $customer['fax'];?></p>
