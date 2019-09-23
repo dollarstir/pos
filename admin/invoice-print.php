@@ -159,12 +159,6 @@ if(isset($_GET)) {
                 </div>
             </div>
 
-            <div class="row mb-2">
-                <div class="col-sm-12 col-12">
-                    <center><h6>Designed By Purplesoft</h6></center>
-                </div>
-            </div>
-
         </div>
 
     </div>
@@ -187,9 +181,29 @@ if(isset($_GET)) {
         });
     </script>
     <script type="text/javascript" src="assets/js/custom.js"></script>
-    <script>window.print();</script>
+    <!-- <script>window.print();</script> -->
     <!-- END GLOBAL MANDATORY SCRIPTS --> 
-    <a href="addpro.php"><div style="position: fixed; top: 10px; right: 20px;" class="btn btn-primary">Back</div></a>
+
+    <a class="print"><div style="position: fixed; top: 10px; right: 20px;" class="btn btn-primary">Print</div></a>
+    <!-- <a class="back" href="addpro.php"><div style="position: fixed; top: 10px; right: 120px;" class="btn btn-primary">Back</div></a> -->
+    <script>
+        var bo = true;
+        $(document).on("click", ".print", function (e) {
+
+            $(this).hide();
+            if(bo) {
+                window.print()
+                bo = false
+            } else {
+                window.location = "addpro.php";
+            }
+           
+            $(this).fadeIn(300);
+            $(this).children("div").html("Back");
+            $(this).attr("href", "addpro.php");
+       
+        });
+    </script>
 </body>
 
 <!-- Mirrored from designreset.com/preview-equation/default/invoice-print.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 May 2019 14:29:57 GMT -->
