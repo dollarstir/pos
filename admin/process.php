@@ -144,7 +144,7 @@ if (isset($_GET['dollar'])) {
         $telephone=$_POST['telephone'];
         $fax=$_POST['fax'];
         // $info=$_POST['info'];
-        $added_date = date("m/d/Y");
+        $added_date = date("Y-m-d");
         
         
         
@@ -184,7 +184,7 @@ if (isset($_GET['dollar'])) {
         $telephone=$_POST['telephone'];
         $fax=$_POST['fax'];
         // $info=$_POST['info'];
-        $added_date = date("m/d/Y");
+        $added_date = date("Y-m-d");
         
         
         

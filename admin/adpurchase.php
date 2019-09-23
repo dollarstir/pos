@@ -1784,7 +1784,7 @@ if (!isset($_SESSION['id']))
 
                                     <div class="form-group mb-4">
                                         <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="date_added" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" value="<?php echo date("m/d/Y");?>" readonly>
+                                        <input name="date_added" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" value="<?php echo date("Y-m-d");?>" readonly>
                                     </div>
                                     <div class="form-group mb-4">
                                         <label for="exampleFormControlInput1">Expiration Date</label>

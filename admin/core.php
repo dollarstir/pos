@@ -251,7 +251,7 @@ function viewproducts(){
 
 
 
-        $getsupp= mysqli_query($conn,"SELECT * FROM suppliers WHERE id ='$sp' ");
+                                        $getsupp= mysqli_query($conn,"SELECT * FROM suppliers WHERE id ='$sp' ");
                                         $gets=mysqli_fetch_array($getsupp);
                                         $spname = $gets['name'];
 
