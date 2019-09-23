@@ -3,17 +3,15 @@
 function sales_report() {
     include "db.php";
 
-    $sql = "SELECT * FROM sales_report ORDER BY date_added DESC";
+    $sql = "SELECT * FROM sales ORDER BY date_added DESC";
     $query = mysqli_query($conn, $sql);
 
     while ($results = mysqli_fetch_array($query)) {
-        $sql_s = "SELECT * FROM sales WHERE invoice = {$results['id']}";
-        $query_s = mysqli_query($conn, $sql_s);
-        $results_s = mysqli_fetch_array($query_s);
+        $sql_sr = "SELECT * FROM sales_report WHERE id = {$results['salesreportID']}";
+        $query_sr = mysqli_query($conn, $sql_sr);
+        $results_sr = mysqli_fetch_array($query_sr);
 
-        $results['quantity'] = $results_s['quantity'];
-
-        $sql_p = "SELECT * FROM drugs WHERE id = {$results['product']}";
+        $sql_p = "SELECT * FROM drugs WHERE id = {$results['product_name']}";
         $query_p = mysqli_query($conn, $sql_p);
         $results_p = mysqli_fetch_array($query_p);
 
@@ -27,9 +25,8 @@ function sales_report() {
                 <td>'.$results['product'].'</td>
                 <td>'.$results['quantity'].'</td>
                 <td>GH&#8373; '.$results['unit_price'].'</td>
-                <td>GH&#8373; '.$results['gt'].'</td>
-                <td>GH&#8373; '.$results['pa'].'</td>
-                <td>GH&#8373; '.$results['balance'].'</td>
+                <td>GH&#8373; '.$results['totalprice'].'</td>
+                <td>'.$results_sr['invoice'].'</td>
                 <td>'.$results['date_added'].'</td>
             </tr>
         
@@ -98,72 +95,140 @@ if(isset($_GET) || isset($_POST)) {
 
 
         if($_POST['func'] == 'reportPopUp') {
+            $var = true;
 
-            foreach ($_POST['target'] as $key => $value) {
-
-                $sql = "SELECT * FROM drugs WHERE id = $value[0]";
-                $query = mysqli_query($conn, $sql);
-                $results = mysqli_fetch_array($query);
-
-                $cost = $results['price'] * $value[1];
-
-                if($results['remaining'] < $value[1]) {
-                    echo '
-                        <div style="color: red;border: 1px solid lightgray;" class="row report">
-                            <div style="margin: 5px 0;" class="col-lg-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <center><h4><b>'.$results['bname'].'</b></h4></center><br>
-                                <center><h5><b>OUT OF STOCK</b></h5></center>
-                                <input name="id" type="hidden" value="'.$results['id'].'">
-                            </div>
+            echo '
+                <div style="box-shadow: 0 0 10px gray;margin-bottom: 5px;" class="widget-content widget-content-area">
+                    <div class="row invoice-top-section">
+                        <div class="col-sm-6 mb-4">
+                            <h5 class="invoice-info-title">Invoice Info</h5>
+                            <p class="invoice-serial-number">#1942784</p>
                         </div>
-                    ';
-
-                } else {
-
-                    
-
-                    echo '
-                        <div style="border: 1px solid lightgray;" class="row report">
-                            <div style="margin: 5px 0;" class="col-lg-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                                <h4><b>'.$results['bname'].'</b></h4><br>
-                                <input name="id" type="hidden" value="'.$results['id'].'">
-                            </div>
-                            <div style="margin: 5px 0;" class="col-lg-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                                Quantity : <span>'.$value[1].'</span><br>
-                                Amount To Be Paid : GH&#8373; <span>'.$cost.'</span>
-                                <input name="quantity" type="hidden" value="'.$value[1].'">
-                                <input name="gt" type="hidden" value="'.$cost.'">
-                            </div>
-                            <div style="margin: 5px 0;" class="col-lg-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                                Customers Name : 
+                        <div class="col-sm-6 mb-4 text-sm-right">
+                            <p class="invoice-order-status"> 
                                 <select name="cname" class="form-control-rounded form-control" id="exampleFormControlSelect1">
-                                <option value="">Select Customer</option>';
-                                
-                                    
-                                      $getsup= mysqli_query($conn,"SELECT * FROM customers");
-                                      while ($row= mysqli_fetch_array($getsup)) {
+                                    <option value="">Select Customer</option>';
+                        
+                                        $getsup= mysqli_query($conn,"SELECT * FROM customers");
+                                        while ($row= mysqli_fetch_array($getsup)) {
             
-                                          $name=$row['name'];
-                                          $id=$row['id'];
-                                          $telephone= $row['telephone'];
-                                          $both = $name.' -'.$telephone;
-                                          echo '<option value="'.$id.'">'.$both.'   </option>';
-                                      }
-                                
-                                
-                                
-                                
-                               
-                           echo' </select>                            </div>
-                            <div style="margin: 5px 0;" class="col-lg-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                                Amount Paid : GH&#8373;
-                                <input name="pa" type="number" class="form-control" value="0">
+                                            $name=$row['name'];
+                                            $id=$row['id'];
+                                            $telephone= $row['telephone'];
+                                            $both = $name.' -'.$telephone;
+                                            echo '<option value="'.$id.'">'.$both.'   </option>';
+                                        }
+                                    
+                                echo '
+                                </select>  
+                            </p>
+                            <p class="invoice-order-date">Date: ###-##-##</p>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2 mb-2">
+                        <div class="col-12">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Item Name</th>
+                                            <th class="text-right" scope="col">Unit Price</th>
+                                            <th class="text-right" scope="col">Qty</th>
+                                            <th class="text-right" scope="col">Total Price</th>    
+                                        </tr>
+                                    </thead>
+                                    <tbody>';
+                                        $gt = 0;
+                                        foreach ($_POST['target'] as $key => $value) {
+
+                                            $sql = "SELECT * FROM drugs WHERE id = $key";
+                                            $query = mysqli_query($conn, $sql);
+                                            $results = mysqli_fetch_array($query);
+
+                                            $cost = $results['price'] * $value;
+
+                                            if($results['remaining'] - $value <= 0) {
+                                                $var = false;
+                                                echo '
+                                                    <tr id="'.$results["id"].'" class="product_details">
+                                                        <td>'.$results["bname"].'</td>
+                                                        <td class="text-right">Out Of Stock</td>
+                                                        <td class="text-right">Out Of Stock</td>
+                                                        <td class="text-right">Out Of Stock</td>
+                                                    </tr>
+                                                ';
+
+                                            } else {
+                                                echo '
+                                                    <tr id="'.$results["id"].'" class="product_details">
+                                                        <td>'.$results["bname"].'</td>
+                                                        <td class="text-right">GH&#8373; '.$results["price"].'</td>
+                                                        <td class="text-right quantity">'.$value.'</td>
+                                                        <td class="text-right">GH&#8373; '.$cost.'</td>
+                                                    </tr>
+                                                ';
+                                            }
+
+
+
+                                            $gt = $gt + $cost;
+                                        }
+
+                            echo    '</tbody>
+                                </table>
                             </div>
                         </div>
-                    ';
-                }
-            }
+                    </div>
 
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <div class="invoice-total-amounts">
+                                <div class="row">
+                                    <div class="col-sm-4 col-7">
+                                        <h4 class="mb-3">Grand Total: </h4>
+                                    </div>
+                                    <div class="col-sm-8 col-5">
+                                        <h4 class="mb-3">GH&#8373; <span class="gtotal">'.$gt.'</span></h4>
+                                    </div>
+                                    <div class="col-sm-4 col-7">
+                                        <p class="mb-3">Total Paid Amount: </p>
+                                    </div>
+                                    <div class="col-sm-8 col-5">
+                                        <p class="mb-3">GH&#8373; 
+                                        <input name="pa" type="text" class="form-control-rounded  form-control" placeholder="" value="0">
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-4 col-7">
+                                        <p class="mb-3">Balance: </p>
+                                    </div>
+                                    <div class="col-sm-8 col-5">
+                                        <p class="mb-3">GH&#8373; <span id="balance">0</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 text-sm-right">
+                            <div class="row">
+                                <div class="col-sm-12 col-12">
+                                ';if($var) { echo'
+                                <a class="submitreport btn btn-gradient-secondary btn-rounded mt-sm-0 mt-2 mb-2">Add Report and Print</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>';} else {
+                                echo'
+                                <a class="btn btn-gradient-secondary btn-rounded mt-sm-0 mt-2 mb-2 outofstock">Remove Item Out of stock</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>';
+
+                }
+
+                // <a class="btn btn-gradient-secondary print-invoice btn-rounded mt-sm-0 mt-2 mb-2" href="invoice-print.html" target="_blank">Add Report and Print</a>
         }
 
 
@@ -172,59 +237,68 @@ if(isset($_GET) || isset($_POST)) {
 
             $res = array();
 
-            foreach ($target as $key => $value) {
+            $value = $target;
 
-                if(empty($value['cname'])) {
-                    $res[$key] = 'empty';
+            if(empty($value['id'])) {
+                $res[0] = 'empty';
 
-                } else if(empty($value['pa'])) {
-                    $res[$key] = 'empty';
+            } else if(empty($value['pa'])) {
+                $res[0] = 'empty';
 
-                } else if($value['pa'] <= 0) {
-                    $res[$key] = 'invalid';
+            } else {
+                extract($value);
+                $balance = $gt - $pa;
+                $date = date('Y-m-d');
 
-                } else {
-                    extract($value);
-                    $balance = $gt - $pa;
-                    $date = date('Y-m-d');
+                $sql = "INSERT INTO sales_report (invoice, Cname, gt, pa, balance, date_added) VALUES ('', '$id', '$gt', '$pa', '$balance',  '$date')";
 
-                    $sql_d = "SELECT * FROM drugs WHERE id = $id";
-                    $query_d = mysqli_query($conn, $sql_d);
-                    $res_d = mysqli_fetch_array($query_d);
+                if(mysqli_query($conn, $sql)) {
+                    $last_id = mysqli_insert_id($conn);
 
-                    if(($res_d['remaining'] - $quantity) < 0) {
-                        $res[$key] = 'out';
+                    foreach ($stuff as $value) {
 
-                    } else {
-                        $remain = $res_d['remaining'] - $quantity;
-                        $sql_dUp = "UPDATE drugs SET remaining = '$remain' WHERE id = $id";
+                        $index = array_search($value, $stuff);
+        
+                        $sql_d = "SELECT * FROM drugs WHERE id = {$value['product']}";
+                        $query_d = mysqli_query($conn, $sql_d);
+                        $res_d = mysqli_fetch_array($query_d);
 
-                        $sql = "INSERT INTO sales_report (product, Cname, gt, pa, balance, date_added) VALUES ('$id','$cname', '$gt', '$pa', '$balance', '$date')";
+                                
+                        $quan =  $value['quantity'];
+                        $pro = $value['product'];
+        
+                        if(($res_d['remaining'] - $quan) < 0) {
+                            $res[0] = 'out';
+        
+                        } else {
+                            $remain = $res_d['remaining'] - $value['quantity'];
+        
+                            $sql_dUp = "UPDATE drugs SET remaining = '$remain' WHERE id = {$value['product']}";
+        
+                            $totalprice = $res_d['price'] * $quan;
 
-
-                        if(mysqli_query($conn, $sql)) {
-                            $last_id = mysqli_insert_id($conn);
+                            $sql1 = "INSERT INTO sales (salesreportID , product_name, totalprice, quantity, date_added) VALUES ('$last_id','$pro', $totalprice, '$quan', '$date')";
     
-                            $sql1 = "INSERT INTO sales (product_name, invoice, quantity, date_added) VALUES ('$id', '$last_id', '$quantity',  '$date')";
     
                             if(mysqli_query($conn, $sql1) && mysqli_query($conn, $sql_dUp)) {
-                                $res[$key] = 'success';
+                                $res[0] = 'success';
+                                $res['return'] = $last_id;
     
                             } else {
-                                $res[$key] ='error';
+                                $res[0] ='error';
     
                             }
-                            
-                        } else {
-                            $res[$key] ='error';
-                
-                        }
-
+        
+                        }  
                     }
-                    
-                }
-            }
 
+                } else {
+                    $res[0] = 'error';
+
+                }
+                
+            }
+            
             echo json_encode($res);
 
         }

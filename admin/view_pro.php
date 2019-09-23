@@ -26,7 +26,7 @@ include "lib.php";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Halidas College  </title>
+    <title>View Sales </title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="assets/css/loader.css" rel="stylesheet" type="text/css" />
@@ -161,9 +161,8 @@ include "lib.php";
                                                 <th>Product</th>
                                                 <th>Quantity</th>
                                                 <th>Unit Price</th>
-                                                <th>Grand Total</th>
-                                                <th>Paid Amount</th>
-                                                <th>Balance</th>
+                                                <th>Total Price</th>
+                                                <th>Report Invoice</th>
                                                 <th>Date Added</th>
                                             </tr>
                                         </thead>
