@@ -28,7 +28,7 @@ if (!isset($_SESSION['id']))
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Add Category</title>
+    <title>Purchases Report</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="assets/css/loader.css" rel="stylesheet" type="text/css">
@@ -1920,8 +1920,8 @@ if (!isset($_SESSION['id']))
 
                     include 'db.php';
 
-                    $fro = "09/19/2019";
-                    $to = "09/20/2019";
+                    $fro = $_POST['fro'];
+                    $to = $_POST['to'];
 
                     echo'<div class="row" id="cancel-row" style="margin-top:-30px;">
                 
@@ -1966,14 +1966,25 @@ if (!isset($_SESSION['id']))
                                             $id= $vip['id'];
                                             $bname= $vip['bname'];
                                             $gname = $vip['gname'];
-                                            $spname = $vip['spname'];
-                                            $category =$vip['category'];
+                                            $sp = $vip['spname'];
+                                            $cat=$vip['category'];
                                             $price = $vip['price'];
                                             $remaining = $vip['remaining'];
                                             $quantity = $vip['quantity'];
                                             $date_added = $vip['date_added'];
                                             $date_updated = $vip['date_updated'];
                                             $expire = $vip['expire'];
+
+
+
+
+                                        $getsupp= mysqli_query($conn,"SELECT * FROM suppliers WHERE id ='$sp' ");
+                                        $gets=mysqli_fetch_array($getsupp);
+                                        $spname = $gets['name'];
+
+                                        $getcupp= mysqli_query($conn,"SELECT * FROM category WHERE id ='$cat' ");
+                                        $getc=mysqli_fetch_array($getcupp);
+                                        $category = $getc['name'];
                                     
                                             echo '<tr>
                                             <td>'.$bname.'</td>
