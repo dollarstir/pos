@@ -212,13 +212,13 @@ echo '<div class="sidebar-wrapper sidebar-theme">
                         </a>
                         <ul class="collapse submenu list-unstyled" id="tables" data-parent="#accordionExample">
                             <li>
-                                <a href="addt.php"> Sales Report </a>
+                                <a href="sreport.php"> Sales Report </a>
                             </li>
                             <li>
                                 <a href="preport.php"> Purchased Report</a>
                             </li>
                             <li>
-                                <a href="viewtea.php"> Customer   Report</a>
+                                <a href="creport.php"> Customer   Report</a>
                             </li>
                             
                             

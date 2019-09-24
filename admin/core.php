@@ -494,6 +494,20 @@ function updtaesuppliers($id,$name,$address,$telephone,$fax){
 }
 
 
+function updtaecustomer($id,$name,$address,$telephone,$fax){
+    include 'db.php';
+    $updsupp= mysqli_query($conn,"UPDATE customers SET name= '$name',address = '$address',telephone = '$telephone',fax = '$fax' WHERE id= '$id' ");
+
+    if ($updsupp) {
+        echo' <div id="mess"><p>Customer updated successfully</p></div>';
+    }
+    else {
+        echo' <div id="mess" style="background-color:red;"><p>Failed to update  Customer</p></div>';
+    }
+}
+
+
+
 
 function updtatecurrency($id,$name,$symbol){
     include 'db.php';

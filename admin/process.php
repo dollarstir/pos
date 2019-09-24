@@ -471,6 +471,49 @@ if (isset($_GET['dollar'])) {
 
 
 
+
+    if ($_GET['dollar']=="updatecu") {
+
+
+        $id=$_POST['id'];
+        $name=$_POST['name'];
+        $address=$_POST['address'];
+        $telephone=$_POST['telephone'];
+        $fax=$_POST['fax'];
+        // $info=$_POST['info'];
+        
+        
+        
+        
+
+        if (empty($name)) {
+
+            echo' <div id="mess" style="background-color:red;"><p>Please Enter  name</p></div>';
+        }
+        elseif (empty($address)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter address</p></div>';
+        }
+        elseif (empty($telephone)) {
+            echo' <div id="mess" style="background-color:red;"><p>Enter Telephone number</p></div>';
+        }
+        
+        else {
+           echo  updtaecustomer($id,$name,$address,$telephone,$fax); 
+        }
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
     if ($_GET['dollar']=="updatecurren") {
 
 

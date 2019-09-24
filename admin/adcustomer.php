@@ -1717,7 +1717,7 @@ if (!isset($_SESSION['id']))
                                    
                                     <div class="form-group mb-4">
                                         <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="name" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Supplier's Name">
+                                        <input name="name" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Customer's Name">
                                     </div>
 
 
