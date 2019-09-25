@@ -147,7 +147,7 @@ if(isset($_GET) || isset($_POST)) {
 
                                             $cost = $results['price'] * $value;
 
-                                            if($results['remaining'] - $value <= 0) {
+                                            if($results['remaining'] - $value < 0) {
                                                 $var = false;
                                                 echo '
                                                     <tr id="'.$results["id"].'" class="product_details">
