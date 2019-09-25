@@ -18,12 +18,6 @@ if (!isset($_SESSION['id']))
 ?>
 
 
-
-
-
-
-
-
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -1929,9 +1923,12 @@ if (!isset($_SESSION['id']))
                         <div class="statbox widget box box-shadow">
                             <div class="widget-header">
                                 <div class="row">
-                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                    <div class="col-xl-9 col-md-9 col-sm-12 col-12">
                                         <center><h4> Purchased Report</h4></center>
-                                    </div>                 
+                                    </div>
+                                    <div class="col-xl-3 col-md-3 col-sm-12 col-12">
+                                        <center><h4>Total Profit : GH&#8373; <span class="totalprofit_js">0</span></h4></center>
+                                    </div>                     
                                 </div>
                             </div>
                             <div class="widget-content widget-content-area">
@@ -1945,9 +1942,10 @@ if (!isset($_SESSION['id']))
                                                 <th>Category</th>
 
                                                 <th>Unit Price</th>
+                                                <th>Quantity</th>
                                                 
                                                 <th>Total Price</th>
-                                                <th>Quantity</th>
+                                                <th>Total Profit</th>
                                                 <th>Report Invoice</th>
                                                 <th>Date Added</th>
                                                
@@ -1970,7 +1968,7 @@ if (!isset($_SESSION['id']))
                                                 $srid= $vip['salesreportID'];
     
                                                 // $category =$vip['category'];
-                                                // $price = $vip['price'];
+                                                $totalprofit = $vip['profit'];
                                                 $totalprice = $vip['totalprice'];
                                                 $quantity = $vip['quantity'];
                                                 $date_added = $vip['date_added'];
@@ -2008,10 +2006,11 @@ if (!isset($_SESSION['id']))
                                                 <td>'.$pname.'</td>
                                                 <td>'.$cname.'</td>
                                                 <td>'.$category.'</td>
-                                                <td>'.$price.'</td>
-                                                <td>'.$totalprice.'</td>
-                                                
+                                                <td>GH&#8373 '.$price.'</td>
                                                 <td>'.$quantity.'</td>
+                                                <td>GH&#8373 '.$totalprice.'</td>
+                                                
+                                                <td>GH&#8373 <span class="profit">'.$totalprofit.'</span></td>
                                                 <td>'.$reportInvoice.'</td>
                                                 <td>'.$date_added.'</td>
                                         
@@ -2054,9 +2053,12 @@ if (!isset($_SESSION['id']))
                             <div class="statbox widget box box-shadow">
                                 <div class="widget-header">
                                     <div class="row">
-                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                        <div class="col-xl-9 col-md-9 col-sm-12 col-12">
                                             <center><h4> Purchased Report</h4></center>
-                                        </div>                 
+                                        </div>
+                                        <div class="col-xl-3 col-md-3 col-sm-12 col-12">
+                                            <center><h4>Total Profit : GH&#8373; <span class="totalprofit_js">0</span></h4></center>
+                                        </div>               
                                     </div>
                                 </div>
                                 <div class="widget-content widget-content-area">
@@ -2070,9 +2072,11 @@ if (!isset($_SESSION['id']))
                                             <th>Category</th>
 
                                             <th>Unit Price</th>
+                                            <th>Quantity</th>
                                             
                                             <th>Total Price</th>
-                                            <th>Quantity</th>
+
+                                            <th>Total Profit</th>
                                             <th>Report Invoice</th>
                                             <th>Date Added</th>
                                            
@@ -2095,7 +2099,7 @@ if (!isset($_SESSION['id']))
                                                 $srid= $vip['salesreportID'];
     
                                                 // $category =$vip['category'];
-                                                // $price = $vip['price'];
+                                                $totalprofit = $vip['profit'];
                                                 $totalprice = $vip['totalprice'];
                                                 $quantity = $vip['quantity'];
                                                 $date_added = $vip['date_added'];
@@ -2106,6 +2110,8 @@ if (!isset($_SESSION['id']))
                                                 $pname = $productdetails['bname'];
                                                 $price = $productdetails['price'];
                                                 $category = $productdetails['category'];
+
+                                     
 
 
 
@@ -2133,10 +2139,11 @@ if (!isset($_SESSION['id']))
                                                 <td>'.$pname.'</td>
                                                 <td>'.$cname.'</td>
                                                 <td>'.$category.'</td>
-                                                <td>'.$price.'</td>
-                                                <td>'.$totalprice.'</td>
-                                                
+                                                <td>GH&#8373 '.$price.'</td>
                                                 <td>'.$quantity.'</td>
+                                                <td>GH&#8373 '.$totalprice.'</td>
+                                                <td>GH&#8373 <span class="profit">'.$totalprofit.'</span></td>
+                                       
                                                 <td>'.$reportInvoice.'</td>
                                                 <td>'.$date_added.'</td>
                                         
@@ -3122,6 +3129,7 @@ if (!isset($_SESSION['id']))
         });
     </script>
     <script src="assets/js/custom.js"></script>
+    <script src="assets/custom.js"></script>
     <!-- END GLOBAL MANDATORY STYLES -->  
     
     <!-- BEGIN PAGE LEVEL CUSTOM SCRIPTS -->

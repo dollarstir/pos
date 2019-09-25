@@ -222,4 +222,17 @@ $(document).ready(function() {
         $.ajax(option)
     })
 
+    var profit_i = $(".profit");
+    var prof_total = 0;
+    var prof;
+
+    profit_i.each(function () {
+        prof = $(this).html();
+
+
+        prof_total = prof_total + parseFloat(prof);
+    })
+
+    $(".totalprofit_js").html(prof_total);
+
 })
