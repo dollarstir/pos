@@ -18,15 +18,20 @@ function sales_report() {
         $results['unit_price'] = $results_p['price'];
         $results['product'] = $results_p['bname'];
 
+        $sql_customer = "SELECT * FROM customers WHERE id = {$results_sr['Cname']}";
+        $query_customer = mysqli_query($conn, $sql_customer);
+        $results_customer = mysqli_fetch_array($query_customer);
+
 
         echo '
             <tr>
                 <td>'.$results['id'].'</td>
-                <td>'.$results_sr['Cname'].'</td>
+                <td>'.$results_customer['name'].'</td>
                 <td>'.$results['product'].'</td>
                 <td>'.$results['quantity'].'</td>
                 <td>GH&#8373; '.$results['unit_price'].'</td>
                 <td>GH&#8373; '.$results['totalprice'].'</td>
+                <td>GH&#8373; '.$results['profit'].'</td>
                 <td>'.$results_sr['invoice'].'</td>
                 <td>'.$results['date_added'].'</td>
             </tr>
@@ -147,7 +152,7 @@ if(isset($_GET) || isset($_POST)) {
 
                                             $cost = $results['price'] * $value;
 
-                                            if($results['remaining'] - $value <= 0) {
+                                            if($results['remaining'] - $value < 0) {
                                                 $var = false;
                                                 echo '
                                                     <tr id="'.$results["id"].'" class="product_details">
@@ -275,8 +280,9 @@ if(isset($_GET) || isset($_POST)) {
                             $sql_dUp = "UPDATE drugs SET remaining = '$remain' WHERE id = {$value['product']}";
         
                             $totalprice = $res_d['price'] * $quan;
+                            $profit = $totalprice - ($res_d['costprice'] * $quan);
 
-                            $sql1 = "INSERT INTO sales (salesreportID , product_name, totalprice, quantity, date_added) VALUES ('$last_id','$pro', $totalprice, '$quan', '$date')";
+                            $sql1 = "INSERT INTO sales (salesreportID , product_name, totalprice, profit, quantity, date_added) VALUES ('$last_id','$pro', $totalprice, '$profit', '$quan', '$date')";
     
     
                             if(mysqli_query($conn, $sql1) && mysqli_query($conn, $sql_dUp)) {

@@ -14,6 +14,7 @@ if (isset($_GET['dollar'])) {
         $gname=$_POST['gname'];
         $spname=$_POST['spname'];
         $category=$_POST['category'];
+        $costprice = $_POST['costprice'];
         $price = $_POST['price'];
         $quantity=$_POST['quantity'];
         $date_added= $_POST['date_added'];
@@ -44,7 +45,7 @@ if (isset($_GET['dollar'])) {
             # code...
         }
         else {
-           echo adprodu($bname,$gname,$spname,$category,$price,$remaining,$quantity,$date_added,$date_updated,$expire); 
+           echo adprodu($bname,$gname,$spname,$category,$costprice,$price,$remaining,$quantity,$date_added,$date_updated,$expire); 
         }
 
         # code...

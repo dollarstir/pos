@@ -1771,15 +1771,22 @@ if (!isset($_SESSION['id']))
                                       </select>
                                   </div>
 
+
+
+                                  <div class="form-group mb-4">
+                                        <!-- <label for="exampleFormControlInput1">Quantity</label> -->
+                                        <input name="costprice" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Cost Price NB: numbers only  ">
+                                    </div>
+
                                     <div class="form-group mb-4">
                                         <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="price" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Unit Price  ">
+                                        <input name="price" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Selling Price NB: numbers only   ">
                                     </div>
 
 
                                     <div class="form-group mb-4">
                                         <!-- <label for="exampleFormControlInput1">Quantity</label> -->
-                                        <input name="quantity" type="text" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Quantity">
+                                        <input name="quantity" type="number" class="form-control-rounded form-control" id="exampleFormControlInput1" placeholder="Quantity">
                                     </div>
 
                                     <div class="form-group mb-4">

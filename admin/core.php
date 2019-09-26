@@ -37,7 +37,7 @@ function login($email,$password)
 
 
 
-function adprodu($bname,$gname,$spname,$category,$price,$remaining,$quantity,$date_added,$date_updated,$expire){
+function adprodu($bname,$gname,$spname,$category,$costprice,$price,$remaining,$quantity,$date_added,$date_updated,$expire){
 
     include "db.php";
 
@@ -48,7 +48,7 @@ function adprodu($bname,$gname,$spname,$category,$price,$remaining,$quantity,$da
                         
             # code...
         } else {
-           $adco= mysqli_query($conn,"INSERT INTO drugs (bname,gname,spname,category,price,remaining,quantity,date_added,date_updated,expire) VALUES ('$bname','$gname','$spname','$category','$price','$remaining','$quantity','$date_added','$date_updated','$expire')  ");
+           $adco= mysqli_query($conn,"INSERT INTO drugs (bname,gname,spname,category,costprice,price,remaining,quantity,date_added,date_updated,expire) VALUES ('$bname','$gname','$spname','$category','$costprice','$price','$remaining','$quantity','$date_added','$date_updated','$expire')  ");
             
                 if ($adco) {
                     echo' <div id="mess"><p>Product added successfully</p></div>';
