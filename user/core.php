@@ -16,7 +16,7 @@ function login($email,$password)
 
     include "db.php";
 
-    $log=mysqli_query($conn,"SELECT * FROM user WHERE email='$email' AND password= '$password'");
+    $log=mysqli_query($conn,"SELECT * FROM admin WHERE email='$email' AND password= '$password'");
 
     if ($row=mysqli_fetch_array($log)) {
      $_SESSION['id']=$row['id'];
@@ -37,7 +37,7 @@ function login($email,$password)
 
 
 
-function adprodu($bname,$gname,$spname,$category,$price,$remaining,$quantity,$date_added,$date_updated,$expire){
+function adprodu($bname,$gname,$spname,$category,$costprice,$price,$remaining,$quantity,$date_added,$date_updated,$expire){
 
     include "db.php";
 
@@ -48,7 +48,7 @@ function adprodu($bname,$gname,$spname,$category,$price,$remaining,$quantity,$da
                         
             # code...
         } else {
-           $adco= mysqli_query($conn,"INSERT INTO drugs (bname,gname,spname,category,price,remaining,quantity,date_added,date_updated,expire) VALUES ('$bname','$gname','$spname','$category','$price','$remaining','$quantity','$date_added','$date_updated','$expire')  ");
+           $adco= mysqli_query($conn,"INSERT INTO drugs (bname,gname,spname,category,costprice,price,remaining,quantity,date_added,date_updated,expire) VALUES ('$bname','$gname','$spname','$category','$costprice','$price','$remaining','$quantity','$date_added','$date_updated','$expire')  ");
             
                 if ($adco) {
                     echo' <div id="mess"><p>Product added successfully</p></div>';
@@ -95,12 +95,12 @@ function adcatego($name,$shortname,$added_on){
 
 
 
-function adpurchas($bname,$gname,$spname,$category,$price,$remaining,$quantity,$date_added,$date_updated,$expire){
+function adpurchas($bname,$gname,$spname,$category,$costprice,$price,$remaining,$quantity,$date_added,$date_updated,$expire){
 
     include "db.php";
 
         
-    $adco= mysqli_query($conn,"INSERT INTO purchased (bname,gname,spname,category,price,remaining,quantity,date_added,date_updated,expire) VALUES ('$bname','$gname','$spname','$category','$price','$remaining','$quantity','$date_added','$date_updated','$expire')  ");
+    $adco= mysqli_query($conn,"INSERT INTO purchased (bname,gname,spname,category,costprice,price,remaining,quantity,date_added,date_updated,expire) VALUES ('$bname','$gname','$spname','$category','$costprice','$price','$remaining','$quantity','$date_added','$date_updated','$expire')  ");
             
         if ($adco) {
             echo' <div id="mess"><p>Product added successfully</p></div>';
@@ -297,6 +297,7 @@ function viewpurchasess(){
         $gname = $vip['gname'];
         $spname = $vip['spname'];
         $category =$vip['category'];
+        $costprice=$vip['costprice'];
         $price = $vip['price'];
         $remaining = $vip['remaining'];
         $quantity = $vip['quantity'];
@@ -309,6 +310,7 @@ function viewpurchasess(){
         <td>'.$gname.'</td>
         <td>'.$spname.'</td>
         <td>'.$category.'</td>
+        <td>'.$costprice.'</td>
         <td>'.$price.'</td>
         
         <td>'.$quantity.'</td>

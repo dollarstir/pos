@@ -163,6 +163,7 @@ include "lib.php";
                                                 <th>Quantity</th>
                                                 <th>Unit Price</th>
                                                 <th>Total Price</th>
+                                                <th>Profit</th>
                                                 <th>Report Invoice</th>
                                                 <th>Date Added</th>
                                             </tr>

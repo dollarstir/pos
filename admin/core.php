@@ -25,7 +25,8 @@ function login($email,$password)
 
      echo '<script>window.location= "home.php"</script>';
     } else {
-        echo    "please enter correct details";
+        echo    "please enter correct details<br>";
+        echo $email;
     }
 }
 
@@ -95,12 +96,12 @@ function adcatego($name,$shortname,$added_on){
 
 
 
-function adpurchas($bname,$gname,$spname,$category,$price,$remaining,$quantity,$date_added,$date_updated,$expire){
+function adpurchas($bname,$gname,$spname,$category,$costprice,$price,$remaining,$quantity,$date_added,$date_updated,$expire){
 
     include "db.php";
 
         
-    $adco= mysqli_query($conn,"INSERT INTO purchased (bname,gname,spname,category,price,remaining,quantity,date_added,date_updated,expire) VALUES ('$bname','$gname','$spname','$category','$price','$remaining','$quantity','$date_added','$date_updated','$expire')  ");
+    $adco= mysqli_query($conn,"INSERT INTO purchased (bname,gname,spname,category,costprice,price,remaining,quantity,date_added,date_updated,expire) VALUES ('$bname','$gname','$spname','$category','$costprice','$price','$remaining','$quantity','$date_added','$date_updated','$expire')  ");
             
         if ($adco) {
             echo' <div id="mess"><p>Product added successfully</p></div>';
@@ -297,6 +298,7 @@ function viewpurchasess(){
         $gname = $vip['gname'];
         $spname = $vip['spname'];
         $category =$vip['category'];
+        $costprice=$vip['costprice'];
         $price = $vip['price'];
         $remaining = $vip['remaining'];
         $quantity = $vip['quantity'];
@@ -309,6 +311,7 @@ function viewpurchasess(){
         <td>'.$gname.'</td>
         <td>'.$spname.'</td>
         <td>'.$category.'</td>
+        <td>'.$costprice.'</td>
         <td>'.$price.'</td>
         
         <td>'.$quantity.'</td>

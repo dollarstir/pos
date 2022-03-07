@@ -38,9 +38,9 @@ include "core.php";
 
     <?php 
     include "db.php";
-    if (isset($_POST['btnlog'])) {
-$email=$_POST['email'];
-$password=$_POST['password'];
+    if (isset($_POST['btnlog'])) {  
+$email=mysqli_escape_string($conn,$_POST['email']);
+$password=mysqli_escape_string($conn,$_POST['password']);
 
 login($email,$password) ;
 

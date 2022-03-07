@@ -22,7 +22,7 @@ if (!isset($_SESSION['id']))
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Sales  Report</title>
+    <title>Sales  Report </title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="assets/css/loader.css" rel="stylesheet" type="text/css">
@@ -1924,7 +1924,7 @@ if (!isset($_SESSION['id']))
                             <div class="widget-header">
                                 <div class="row">
                                     <div class="col-xl-9 col-md-9 col-sm-12 col-12">
-                                        <center><h4> Purchased Report</h4></center>
+                                        <center><h4>Sales Report</h4></center>
                                     </div>
                                     <div class="col-xl-3 col-md-3 col-sm-12 col-12">
                                         <center><h4>Total Profit : GH&#8373; <span class="totalprofit_js">0</span></h4></center>
@@ -2054,7 +2054,7 @@ if (!isset($_SESSION['id']))
                                 <div class="widget-header">
                                     <div class="row">
                                         <div class="col-xl-9 col-md-9 col-sm-12 col-12">
-                                            <center><h4> Purchased Report</h4></center>
+                                            <center><h4> Sales Report</h4></center>
                                         </div>
                                         <div class="col-xl-3 col-md-3 col-sm-12 col-12">
                                             <center><h4>Total Profit : GH&#8373; <span class="totalprofit_js">0</span></h4></center>

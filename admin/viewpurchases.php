@@ -179,7 +179,8 @@ if (!isset($_SESSION['id']))
                                                 <th>Genetic Name</th>
                                                 <th>Supplier Namne</th>
                                                 <th>Category</th>
-                                                <th>Price</th>
+                                                <th> Cost Price</th>
+                                                <th>Selling price</th>
                                                 
                                                 <th>Quantity</th>
                                                 <th>Date Added</th>
